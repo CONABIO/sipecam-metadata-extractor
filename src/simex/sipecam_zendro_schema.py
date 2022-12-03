@@ -105,7 +105,7 @@ Time = sgqlc.types.datetime.Time
 
 class annotations_geom_obs_typeField(sgqlc.types.Enum):
     __schema__ = sipecam_zendro_schema
-    __choices__ = ('classification_method', 'classified_by', 'confidence', 'createdAt', 'file_id', 'frequency_max', 'frequency_min', 'geometry', 'id', 'observation_type', 'time_max', 'time_min', 'updatedAt', 'video_frame_num')
+    __choices__ = ('classification_method', 'classified_by', 'confidence', 'createdAt', 'file_id', 'frequency_max', 'frequency_min', 'geometry', 'id', 'observation_type', 'pipeline_id', 'time_max', 'time_min', 'updatedAt', 'user_id', 'video_frame_num')
 
 
 class calendarField(sgqlc.types.Enum):
@@ -121,11 +121,6 @@ class cumulusField(sgqlc.types.Enum):
 class cumulus_criteriaField(sgqlc.types.Enum):
     __schema__ = sipecam_zendro_schema
     __choices__ = ('id', 'name')
-
-
-class delivered_filesField(sgqlc.types.Enum):
-    __schema__ = sipecam_zendro_schema
-    __choices__ = ('audio_files', 'id', 'image_files', 'node_id', 'reception_date', 'total_files', 'video_files', 'who_delivers')
 
 
 class deploymentField(sgqlc.types.Enum):
@@ -145,7 +140,7 @@ class ecosystemField(sgqlc.types.Enum):
 
 class fileField(sgqlc.types.Enum):
     __schema__ = sipecam_zendro_schema
-    __choices__ = ('createdAt', 'deployment_id', 'id', 'id_alfresco', 'product_ids', 'storage', 'type', 'updatedAt', 'url')
+    __choices__ = ('createdAt', 'date_deployment_device', 'deployment_id', 'id', 'id_alfresco', 'storage', 'type', 'updatedAt', 'url')
 
 
 class file_countField(sgqlc.types.Enum):
@@ -180,12 +175,12 @@ class physical_deviceField(sgqlc.types.Enum):
 
 class pipeline_infoField(sgqlc.types.Enum):
     __schema__ = sipecam_zendro_schema
-    __choices__ = ('comments', 'commit_dvc_of_data_ref', 'commit_dvc_of_model', 'createdAt', 'id', 'updatedAt', 'url_repo_model', 'version')
+    __choices__ = ('comments', 'commit_dvc_of_data_ref', 'createdAt', 'id', 'updatedAt', 'url_repo_model', 'version')
 
 
 class productField(sgqlc.types.Enum):
     __schema__ = sipecam_zendro_schema
-    __choices__ = ('audio_distance_to_mean', 'audio_grid_id', 'comments', 'createdAt', 'file_ids', 'id', 'metadata', 'observation_type', 'pipeline_id', 'producer', 'project', 'type', 'updatedAt', 'url')
+    __choices__ = ('comments', 'createdAt', 'file_id', 'id', 'metadata', 'observation_type', 'pipeline_id', 'producer', 'project', 'type', 'updatedAt', 'url')
 
 
 class roleField(sgqlc.types.Enum):
@@ -224,6 +219,20 @@ class bulkAssociationAnnotations_geom_obs_typeWithFile_idInput(sgqlc.types.Input
     file_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='file_id')
 
 
+class bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput(sgqlc.types.Input):
+    __schema__ = sipecam_zendro_schema
+    __field_names__ = ('id', 'pipeline_id')
+    id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='id')
+    pipeline_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='pipeline_id')
+
+
+class bulkAssociationAnnotations_geom_obs_typeWithUser_idInput(sgqlc.types.Input):
+    __schema__ = sipecam_zendro_schema
+    __field_names__ = ('id', 'user_id')
+    id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='id')
+    user_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='user_id')
+
+
 class bulkAssociationCumulusWithCriteria_idInput(sgqlc.types.Input):
     __schema__ = sipecam_zendro_schema
     __field_names__ = ('id', 'criteria_id')
@@ -236,13 +245,6 @@ class bulkAssociationCumulusWithEcosystem_idInput(sgqlc.types.Input):
     __field_names__ = ('id', 'ecosystem_id')
     id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='id')
     ecosystem_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='ecosystem_id')
-
-
-class bulkAssociationDelivered_filesWithNode_idInput(sgqlc.types.Input):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'node_id')
-    id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='id')
-    node_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='node_id')
 
 
 class bulkAssociationDeploymentWithCumulus_idInput(sgqlc.types.Input):
@@ -329,6 +331,13 @@ class bulkAssociationPhysical_deviceWithDevice_idInput(sgqlc.types.Input):
     device_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='device_id')
 
 
+class bulkAssociationProductWithFile_idInput(sgqlc.types.Input):
+    __schema__ = sipecam_zendro_schema
+    __field_names__ = ('id', 'file_id')
+    id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='id')
+    file_id = sgqlc.types.Field(sgqlc.types.non_null(ID), graphql_name='file_id')
+
+
 class bulkAssociationProductWithPipeline_idInput(sgqlc.types.Input):
     __schema__ = sipecam_zendro_schema
     __field_names__ = ('id', 'pipeline_id')
@@ -396,13 +405,6 @@ class orderCumulus_criteriaInput(sgqlc.types.Input):
     __schema__ = sipecam_zendro_schema
     __field_names__ = ('field', 'order')
     field = sgqlc.types.Field(cumulus_criteriaField, graphql_name='field')
-    order = sgqlc.types.Field(Order, graphql_name='order')
-
-
-class orderDelivered_filesInput(sgqlc.types.Input):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('field', 'order')
-    field = sgqlc.types.Field(delivered_filesField, graphql_name='field')
     order = sgqlc.types.Field(Order, graphql_name='order')
 
 
@@ -580,16 +582,6 @@ class searchCumulus_criteriaInput(sgqlc.types.Input):
     value_type = sgqlc.types.Field(InputType, graphql_name='valueType')
     operator = sgqlc.types.Field(GenericPrestoSqlOperator, graphql_name='operator')
     search = sgqlc.types.Field(sgqlc.types.list_of('searchCumulus_criteriaInput'), graphql_name='search')
-
-
-class searchDelivered_filesInput(sgqlc.types.Input):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('field', 'value', 'value_type', 'operator', 'search')
-    field = sgqlc.types.Field(delivered_filesField, graphql_name='field')
-    value = sgqlc.types.Field(String, graphql_name='value')
-    value_type = sgqlc.types.Field(InputType, graphql_name='valueType')
-    operator = sgqlc.types.Field(GenericPrestoSqlOperator, graphql_name='operator')
-    search = sgqlc.types.Field(sgqlc.types.list_of('searchDelivered_filesInput'), graphql_name='search')
 
 
 class searchDeploymentInput(sgqlc.types.Input):
@@ -826,21 +818,6 @@ class Cumulus_criteriaEdge(sgqlc.types.Type):
     node = sgqlc.types.Field(sgqlc.types.non_null('cumulus_criteria'), graphql_name='node')
 
 
-class Delivered_filesConnection(sgqlc.types.Type):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('edges', 'delivered_files', 'page_info')
-    edges = sgqlc.types.Field(sgqlc.types.list_of('Delivered_filesEdge'), graphql_name='edges')
-    delivered_files = sgqlc.types.Field(sgqlc.types.list_of('delivered_files'), graphql_name='delivered_files')
-    page_info = sgqlc.types.Field(sgqlc.types.non_null('pageInfo'), graphql_name='pageInfo')
-
-
-class Delivered_filesEdge(sgqlc.types.Type):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('cursor', 'node')
-    cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='cursor')
-    node = sgqlc.types.Field(sgqlc.types.non_null('delivered_files'), graphql_name='node')
-
-
 class DeploymentConnection(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
     __field_names__ = ('edges', 'deployments', 'page_info')
@@ -963,7 +940,7 @@ class MonitorEdge(sgqlc.types.Type):
 
 class Mutation(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('add_annotations_geom_obs_type', 'update_annotations_geom_obs_type', 'delete_annotations_geom_obs_type', 'bulk_associate_annotations_geom_obs_type_with_file_id', 'bulk_dis_associate_annotations_geom_obs_type_with_file_id', 'add_calendar', 'update_calendar', 'delete_calendar', 'add_cumulus', 'update_cumulus', 'delete_cumulus', 'bulk_associate_cumulus_with_criteria_id', 'bulk_dis_associate_cumulus_with_criteria_id', 'bulk_associate_cumulus_with_ecosystem_id', 'bulk_dis_associate_cumulus_with_ecosystem_id', 'add_cumulus_criteria', 'update_cumulus_criteria', 'delete_cumulus_criteria', 'add_delivered_files', 'update_delivered_files', 'delete_delivered_files', 'bulk_associate_delivered_files_with_node_id', 'bulk_dis_associate_delivered_files_with_node_id', 'add_deployment', 'update_deployment', 'delete_deployment', 'bulk_associate_deployment_with_device_id', 'bulk_dis_associate_deployment_with_device_id', 'bulk_associate_deployment_with_node_id', 'bulk_dis_associate_deployment_with_node_id', 'bulk_associate_deployment_with_cumulus_id', 'bulk_dis_associate_deployment_with_cumulus_id', 'add_device_catalog', 'update_device_catalog', 'delete_device_catalog', 'add_ecosystem', 'update_ecosystem', 'delete_ecosystem', 'add_file', 'update_file', 'delete_file', 'bulk_associate_file_with_deployment_id', 'bulk_dis_associate_file_with_deployment_id', 'add_file_count', 'update_file_count', 'delete_file_count', 'bulk_associate_file_count_with_cumulus_id', 'bulk_dis_associate_file_count_with_cumulus_id', 'add_individual', 'update_individual', 'delete_individual', 'bulk_associate_individual_with_node_id', 'bulk_dis_associate_individual_with_node_id', 'bulk_associate_individual_with_cumulus_id', 'bulk_dis_associate_individual_with_cumulus_id', 'add_institution', 'update_institution', 'delete_institution', 'add_monitor', 'update_monitor', 'delete_monitor', 'bulk_associate_monitor_with_cumulus_id', 'bulk_dis_associate_monitor_with_cumulus_id', 'add_node', 'update_node', 'delete_node', 'bulk_associate_node_with_cumulus_id', 'bulk_dis_associate_node_with_cumulus_id', 'bulk_associate_node_with_ecosystem_id', 'bulk_dis_associate_node_with_ecosystem_id', 'add_physical_device', 'update_physical_device', 'delete_physical_device', 'bulk_associate_physical_device_with_device_id', 'bulk_dis_associate_physical_device_with_device_id', 'bulk_associate_physical_device_with_cumulus_id', 'bulk_dis_associate_physical_device_with_cumulus_id', 'add_pipeline_info', 'update_pipeline_info', 'delete_pipeline_info', 'add_product', 'update_product', 'delete_product', 'bulk_associate_product_with_pipeline_id', 'bulk_dis_associate_product_with_pipeline_id', 'add_role', 'update_role', 'delete_role', 'add_role_to_user', 'update_role_to_user', 'delete_role_to_user', 'add_transect', 'update_transect', 'delete_transect', 'bulk_associate_transect_with_node_id', 'bulk_dis_associate_transect_with_node_id', 'add_user', 'update_user', 'delete_user', 'bulk_associate_user_with_institution_id', 'bulk_dis_associate_user_with_institution_id', 'add_visit', 'update_visit', 'delete_visit', 'bulk_associate_visit_with_cumulus_id', 'bulk_dis_associate_visit_with_cumulus_id', 'bulk_associate_visit_with_pristine_id', 'bulk_dis_associate_visit_with_pristine_id', 'bulk_associate_visit_with_disturbed_id', 'bulk_dis_associate_visit_with_disturbed_id')
+    __field_names__ = ('add_annotations_geom_obs_type', 'update_annotations_geom_obs_type', 'delete_annotations_geom_obs_type', 'bulk_associate_annotations_geom_obs_type_with_file_id', 'bulk_dis_associate_annotations_geom_obs_type_with_file_id', 'bulk_associate_annotations_geom_obs_type_with_user_id', 'bulk_dis_associate_annotations_geom_obs_type_with_user_id', 'bulk_associate_annotations_geom_obs_type_with_pipeline_id', 'bulk_dis_associate_annotations_geom_obs_type_with_pipeline_id', 'add_calendar', 'update_calendar', 'delete_calendar', 'add_cumulus', 'update_cumulus', 'delete_cumulus', 'bulk_associate_cumulus_with_criteria_id', 'bulk_dis_associate_cumulus_with_criteria_id', 'bulk_associate_cumulus_with_ecosystem_id', 'bulk_dis_associate_cumulus_with_ecosystem_id', 'add_cumulus_criteria', 'update_cumulus_criteria', 'delete_cumulus_criteria', 'add_deployment', 'update_deployment', 'delete_deployment', 'bulk_associate_deployment_with_device_id', 'bulk_dis_associate_deployment_with_device_id', 'bulk_associate_deployment_with_node_id', 'bulk_dis_associate_deployment_with_node_id', 'bulk_associate_deployment_with_cumulus_id', 'bulk_dis_associate_deployment_with_cumulus_id', 'add_device_catalog', 'update_device_catalog', 'delete_device_catalog', 'add_ecosystem', 'update_ecosystem', 'delete_ecosystem', 'add_file', 'update_file', 'delete_file', 'bulk_associate_file_with_deployment_id', 'bulk_dis_associate_file_with_deployment_id', 'add_file_count', 'update_file_count', 'delete_file_count', 'bulk_associate_file_count_with_cumulus_id', 'bulk_dis_associate_file_count_with_cumulus_id', 'add_individual', 'update_individual', 'delete_individual', 'bulk_associate_individual_with_node_id', 'bulk_dis_associate_individual_with_node_id', 'bulk_associate_individual_with_cumulus_id', 'bulk_dis_associate_individual_with_cumulus_id', 'add_institution', 'update_institution', 'delete_institution', 'add_monitor', 'update_monitor', 'delete_monitor', 'bulk_associate_monitor_with_cumulus_id', 'bulk_dis_associate_monitor_with_cumulus_id', 'add_node', 'update_node', 'delete_node', 'bulk_associate_node_with_cumulus_id', 'bulk_dis_associate_node_with_cumulus_id', 'bulk_associate_node_with_ecosystem_id', 'bulk_dis_associate_node_with_ecosystem_id', 'add_physical_device', 'update_physical_device', 'delete_physical_device', 'bulk_associate_physical_device_with_device_id', 'bulk_dis_associate_physical_device_with_device_id', 'bulk_associate_physical_device_with_cumulus_id', 'bulk_dis_associate_physical_device_with_cumulus_id', 'add_pipeline_info', 'update_pipeline_info', 'delete_pipeline_info', 'add_product', 'update_product', 'delete_product', 'bulk_associate_product_with_file_id', 'bulk_dis_associate_product_with_file_id', 'bulk_associate_product_with_pipeline_id', 'bulk_dis_associate_product_with_pipeline_id', 'add_role', 'update_role', 'delete_role', 'add_role_to_user', 'update_role_to_user', 'delete_role_to_user', 'add_transect', 'update_transect', 'delete_transect', 'bulk_associate_transect_with_node_id', 'bulk_dis_associate_transect_with_node_id', 'add_user', 'update_user', 'delete_user', 'bulk_associate_user_with_institution_id', 'bulk_dis_associate_user_with_institution_id', 'add_visit', 'update_visit', 'delete_visit', 'bulk_associate_visit_with_cumulus_id', 'bulk_dis_associate_visit_with_cumulus_id', 'bulk_associate_visit_with_pristine_id', 'bulk_dis_associate_visit_with_pristine_id', 'bulk_associate_visit_with_disturbed_id', 'bulk_dis_associate_visit_with_disturbed_id')
     add_annotations_geom_obs_type = sgqlc.types.Field(sgqlc.types.non_null('annotations_geom_obs_type'), graphql_name='addAnnotations_geom_obs_type', args=sgqlc.types.ArgDict((
         ('classified_by', sgqlc.types.Arg(String, graphql_name='classified_by', default=None)),
         ('classification_method', sgqlc.types.Arg(String, graphql_name='classification_method', default=None)),
@@ -978,6 +955,8 @@ class Mutation(sgqlc.types.Type):
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('add_file_to', sgqlc.types.Arg(ID, graphql_name='addFileTo', default=None)),
+        ('add_user_to', sgqlc.types.Arg(ID, graphql_name='addUserTo', default=None)),
+        ('add_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='addPipeline_annotation', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -997,6 +976,10 @@ class Mutation(sgqlc.types.Type):
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('add_file_to', sgqlc.types.Arg(ID, graphql_name='addFileTo', default=None)),
         ('remove_file_to', sgqlc.types.Arg(ID, graphql_name='removeFileTo', default=None)),
+        ('add_user_to', sgqlc.types.Arg(ID, graphql_name='addUserTo', default=None)),
+        ('remove_user_to', sgqlc.types.Arg(ID, graphql_name='removeUserTo', default=None)),
+        ('add_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='addPipeline_annotation', default=None)),
+        ('remove_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='removePipeline_annotation', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1011,6 +994,26 @@ class Mutation(sgqlc.types.Type):
     )
     bulk_dis_associate_annotations_geom_obs_type_with_file_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkDisAssociateAnnotations_geom_obs_typeWithFile_id', args=sgqlc.types.ArgDict((
         ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationAnnotations_geom_obs_typeWithFile_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
+))
+    )
+    bulk_associate_annotations_geom_obs_type_with_user_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkAssociateAnnotations_geom_obs_typeWithUser_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationAnnotations_geom_obs_typeWithUser_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
+))
+    )
+    bulk_dis_associate_annotations_geom_obs_type_with_user_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkDisAssociateAnnotations_geom_obs_typeWithUser_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationAnnotations_geom_obs_typeWithUser_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
+))
+    )
+    bulk_associate_annotations_geom_obs_type_with_pipeline_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkAssociateAnnotations_geom_obs_typeWithPipeline_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
+))
+    )
+    bulk_dis_associate_annotations_geom_obs_type_with_pipeline_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkDisAssociateAnnotations_geom_obs_typeWithPipeline_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput), graphql_name='bulkAssociationInput', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1122,44 +1125,6 @@ class Mutation(sgqlc.types.Type):
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
 ))
     )
-    add_delivered_files = sgqlc.types.Field(sgqlc.types.non_null('delivered_files'), graphql_name='addDelivered_files', args=sgqlc.types.ArgDict((
-        ('who_delivers', sgqlc.types.Arg(String, graphql_name='who_delivers', default=None)),
-        ('reception_date', sgqlc.types.Arg(Date, graphql_name='reception_date', default=None)),
-        ('total_files', sgqlc.types.Arg(Int, graphql_name='total_files', default=None)),
-        ('audio_files', sgqlc.types.Arg(Int, graphql_name='audio_files', default=None)),
-        ('image_files', sgqlc.types.Arg(Int, graphql_name='image_files', default=None)),
-        ('video_files', sgqlc.types.Arg(Int, graphql_name='video_files', default=None)),
-        ('add_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='addNode_delivered_files', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
-    update_delivered_files = sgqlc.types.Field(sgqlc.types.non_null('delivered_files'), graphql_name='updateDelivered_files', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-        ('who_delivers', sgqlc.types.Arg(String, graphql_name='who_delivers', default=None)),
-        ('reception_date', sgqlc.types.Arg(Date, graphql_name='reception_date', default=None)),
-        ('total_files', sgqlc.types.Arg(Int, graphql_name='total_files', default=None)),
-        ('audio_files', sgqlc.types.Arg(Int, graphql_name='audio_files', default=None)),
-        ('image_files', sgqlc.types.Arg(Int, graphql_name='image_files', default=None)),
-        ('video_files', sgqlc.types.Arg(Int, graphql_name='video_files', default=None)),
-        ('add_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='addNode_delivered_files', default=None)),
-        ('remove_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='removeNode_delivered_files', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
-    delete_delivered_files = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='deleteDelivered_files', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-))
-    )
-    bulk_associate_delivered_files_with_node_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkAssociateDelivered_filesWithNode_id', args=sgqlc.types.ArgDict((
-        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationDelivered_filesWithNode_idInput), graphql_name='bulkAssociationInput', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
-    bulk_dis_associate_delivered_files_with_node_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkDisAssociateDelivered_filesWithNode_id', args=sgqlc.types.ArgDict((
-        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationDelivered_filesWithNode_idInput), graphql_name='bulkAssociationInput', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
     add_deployment = sgqlc.types.Field(sgqlc.types.non_null('deployment'), graphql_name='addDeployment', args=sgqlc.types.ArgDict((
         ('date_deployment', sgqlc.types.Arg(DateTime, graphql_name='date_deployment', default=None)),
         ('latitude', sgqlc.types.Arg(Float, graphql_name='latitude', default=None)),
@@ -1252,17 +1217,17 @@ class Mutation(sgqlc.types.Type):
     add_ecosystem = sgqlc.types.Field(sgqlc.types.non_null('ecosystem'), graphql_name='addEcosystem', args=sgqlc.types.ArgDict((
         ('name', sgqlc.types.Arg(String, graphql_name='name', default=None)),
         ('add_unique_node', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUnique_node', default=None)),
-        ('add_cumulus_ecosystems', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addCumulus_ecosystems', default=None)),
+        ('add_cumulus_ecosystem', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addCumulus_ecosystem', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
     update_ecosystem = sgqlc.types.Field(sgqlc.types.non_null('ecosystem'), graphql_name='updateEcosystem', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('name', sgqlc.types.Arg(String, graphql_name='name', default=None)),
-        ('add_unique_nodes', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUnique_nodes', default=None)),
-        ('remove_unique_nodes', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeUnique_nodes', default=None)),
-        ('add_cumulus_ecosystems', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addCumulus_ecosystems', default=None)),
-        ('remove_cumulus_ecosystems', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeCumulus_ecosystems', default=None)),
+        ('add_unique_node', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUnique_node', default=None)),
+        ('remove_unique_node', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeUnique_node', default=None)),
+        ('add_cumulus_ecosystem', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addCumulus_ecosystem', default=None)),
+        ('remove_cumulus_ecosystem', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeCumulus_ecosystem', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1272,6 +1237,7 @@ class Mutation(sgqlc.types.Type):
     )
     add_file = sgqlc.types.Field(sgqlc.types.non_null('file'), graphql_name='addFile', args=sgqlc.types.ArgDict((
         ('url', sgqlc.types.Arg(String, graphql_name='url', default=None)),
+        ('date_deployment_device', sgqlc.types.Arg(Date, graphql_name='date_deployment_device', default=None)),
         ('type', sgqlc.types.Arg(String, graphql_name='type', default=None)),
         ('id_alfresco', sgqlc.types.Arg(String, graphql_name='id_alfresco', default=None)),
         ('storage', sgqlc.types.Arg(String, graphql_name='storage', default=None)),
@@ -1286,6 +1252,7 @@ class Mutation(sgqlc.types.Type):
     update_file = sgqlc.types.Field(sgqlc.types.non_null('file'), graphql_name='updateFile', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('url', sgqlc.types.Arg(String, graphql_name='url', default=None)),
+        ('date_deployment_device', sgqlc.types.Arg(Date, graphql_name='date_deployment_device', default=None)),
         ('type', sgqlc.types.Arg(String, graphql_name='type', default=None)),
         ('id_alfresco', sgqlc.types.Arg(String, graphql_name='id_alfresco', default=None)),
         ('storage', sgqlc.types.Arg(String, graphql_name='storage', default=None)),
@@ -1479,7 +1446,6 @@ class Mutation(sgqlc.types.Type):
         ('add_deployments', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDeployments', default=None)),
         ('add_individuals', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addIndividuals', default=None)),
         ('add_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addTransects', default=None)),
-        ('add_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDelivered_files', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1504,8 +1470,6 @@ class Mutation(sgqlc.types.Type):
         ('remove_individuals', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeIndividuals', default=None)),
         ('add_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addTransects', default=None)),
         ('remove_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeTransects', default=None)),
-        ('add_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDelivered_files', default=None)),
-        ('remove_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeDelivered_files', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1586,12 +1550,12 @@ class Mutation(sgqlc.types.Type):
     add_pipeline_info = sgqlc.types.Field(sgqlc.types.non_null('pipeline_info'), graphql_name='addPipeline_info', args=sgqlc.types.ArgDict((
         ('version', sgqlc.types.Arg(String, graphql_name='version', default=None)),
         ('commit_dvc_of_data_ref', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_data_ref', default=None)),
-        ('commit_dvc_of_model', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_model', default=None)),
         ('url_repo_model', sgqlc.types.Arg(String, graphql_name='url_repo_model', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
         ('add_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addPipeline_products', default=None)),
+        ('add_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAnnotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1599,13 +1563,14 @@ class Mutation(sgqlc.types.Type):
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('version', sgqlc.types.Arg(String, graphql_name='version', default=None)),
         ('commit_dvc_of_data_ref', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_data_ref', default=None)),
-        ('commit_dvc_of_model', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_model', default=None)),
         ('url_repo_model', sgqlc.types.Arg(String, graphql_name='url_repo_model', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
         ('add_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addPipeline_products', default=None)),
         ('remove_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removePipeline_products', default=None)),
+        ('add_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAnnotations', default=None)),
+        ('remove_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeAnnotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1620,13 +1585,11 @@ class Mutation(sgqlc.types.Type):
         ('producer', sgqlc.types.Arg(String, graphql_name='producer', default=None)),
         ('project', sgqlc.types.Arg(String, graphql_name='project', default=None)),
         ('metadata', sgqlc.types.Arg(JSON, graphql_name='metadata', default=None)),
-        ('audio_grid_id', sgqlc.types.Arg(Int, graphql_name='audio_grid_id', default=None)),
-        ('audio_distance_to_mean', sgqlc.types.Arg(Float, graphql_name='audio_distance_to_mean', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
+        ('add_file_assoc', sgqlc.types.Arg(ID, graphql_name='addFileAssoc', default=None)),
         ('add_pipeline', sgqlc.types.Arg(ID, graphql_name='addPipeline', default=None)),
-        ('add_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addFileAssoc', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1638,20 +1601,28 @@ class Mutation(sgqlc.types.Type):
         ('producer', sgqlc.types.Arg(String, graphql_name='producer', default=None)),
         ('project', sgqlc.types.Arg(String, graphql_name='project', default=None)),
         ('metadata', sgqlc.types.Arg(JSON, graphql_name='metadata', default=None)),
-        ('audio_grid_id', sgqlc.types.Arg(Int, graphql_name='audio_grid_id', default=None)),
-        ('audio_distance_to_mean', sgqlc.types.Arg(Float, graphql_name='audio_distance_to_mean', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
+        ('add_file_assoc', sgqlc.types.Arg(ID, graphql_name='addFileAssoc', default=None)),
+        ('remove_file_assoc', sgqlc.types.Arg(ID, graphql_name='removeFileAssoc', default=None)),
         ('add_pipeline', sgqlc.types.Arg(ID, graphql_name='addPipeline', default=None)),
         ('remove_pipeline', sgqlc.types.Arg(ID, graphql_name='removePipeline', default=None)),
-        ('add_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addFileAssoc', default=None)),
-        ('remove_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeFileAssoc', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
     delete_product = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='deleteProduct', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
+))
+    )
+    bulk_associate_product_with_file_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkAssociateProductWithFile_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationProductWithFile_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
+))
+    )
+    bulk_dis_associate_product_with_file_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkDisAssociateProductWithFile_id', args=sgqlc.types.ArgDict((
+        ('bulk_association_input', sgqlc.types.Arg(sgqlc.types.list_of(bulkAssociationProductWithFile_idInput), graphql_name='bulkAssociationInput', default=None)),
+        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
     bulk_associate_product_with_pipeline_id = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='bulkAssociateProductWithPipeline_id', args=sgqlc.types.ArgDict((
@@ -1754,6 +1725,7 @@ class Mutation(sgqlc.types.Type):
         ('add_institutions', sgqlc.types.Arg(ID, graphql_name='addInstitutions', default=None)),
         ('add_roles', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addRoles', default=None)),
         ('add_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAssociated_cumulus', default=None)),
+        ('add_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUser_annotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1772,6 +1744,8 @@ class Mutation(sgqlc.types.Type):
         ('remove_roles', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeRoles', default=None)),
         ('add_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAssociated_cumulus', default=None)),
         ('remove_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeAssociated_cumulus', default=None)),
+        ('add_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUser_annotations', default=None)),
+        ('remove_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeUser_annotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1922,7 +1896,7 @@ class ProductEdge(sgqlc.types.Type):
 
 class Query(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('annotations_geom_obs_types', 'read_one_annotations_geom_obs_type', 'count_annotations_geom_obs_types', 'csv_table_template_annotations_geom_obs_type', 'annotations_geom_obs_types_connection', 'validate_annotations_geom_obs_type_for_creation', 'validate_annotations_geom_obs_type_for_updating', 'validate_annotations_geom_obs_type_for_deletion', 'validate_annotations_geom_obs_type_after_reading', 'annotations_geom_obs_types_zendro_definition', 'calendars', 'read_one_calendar', 'count_calendars', 'csv_table_template_calendar', 'calendars_connection', 'validate_calendar_for_creation', 'validate_calendar_for_updating', 'validate_calendar_for_deletion', 'validate_calendar_after_reading', 'calendars_zendro_definition', 'cumulus', 'read_one_cumulus', 'count_cumulus', 'csv_table_template_cumulus', 'cumulus_connection', 'validate_cumulus_for_creation', 'validate_cumulus_for_updating', 'validate_cumulus_for_deletion', 'validate_cumulus_after_reading', 'cumulus_zendro_definition', 'cumulus_criteria', 'read_one_cumulus_criteria', 'count_cumulus_criteria', 'csv_table_template_cumulus_criteria', 'cumulus_criteria_connection', 'validate_cumulus_criteria_for_creation', 'validate_cumulus_criteria_for_updating', 'validate_cumulus_criteria_for_deletion', 'validate_cumulus_criteria_after_reading', 'cumulus_criteria_zendro_definition', 'ecosystem_file_counts', 'delivered_files', 'read_one_delivered_files', 'count_delivered_files', 'csv_table_template_delivered_files', 'delivered_files_connection', 'validate_delivered_files_for_creation', 'validate_delivered_files_for_updating', 'validate_delivered_files_for_deletion', 'validate_delivered_files_after_reading', 'delivered_files_zendro_definition', 'deployments', 'read_one_deployment', 'count_deployments', 'csv_table_template_deployment', 'deployments_connection', 'validate_deployment_for_creation', 'validate_deployment_for_updating', 'validate_deployment_for_deletion', 'validate_deployment_after_reading', 'deployments_zendro_definition', 'device_catalogs', 'read_one_device_catalog', 'count_device_catalogs', 'csv_table_template_device_catalog', 'device_catalogs_connection', 'validate_device_catalog_for_creation', 'validate_device_catalog_for_updating', 'validate_device_catalog_for_deletion', 'validate_device_catalog_after_reading', 'device_catalogs_zendro_definition', 'ecosystems', 'read_one_ecosystem', 'count_ecosystems', 'csv_table_template_ecosystem', 'ecosystems_connection', 'validate_ecosystem_for_creation', 'validate_ecosystem_for_updating', 'validate_ecosystem_for_deletion', 'validate_ecosystem_after_reading', 'ecosystems_zendro_definition', 'files', 'read_one_file', 'count_files', 'csv_table_template_file', 'files_connection', 'validate_file_for_creation', 'validate_file_for_updating', 'validate_file_for_deletion', 'validate_file_after_reading', 'files_zendro_definition', 'file_counts', 'read_one_file_count', 'count_file_counts', 'csv_table_template_file_count', 'file_counts_connection', 'validate_file_count_for_creation', 'validate_file_count_for_updating', 'validate_file_count_for_deletion', 'validate_file_count_after_reading', 'file_counts_zendro_definition', 'individuals', 'read_one_individual', 'count_individuals', 'csv_table_template_individual', 'individuals_connection', 'validate_individual_for_creation', 'validate_individual_for_updating', 'validate_individual_for_deletion', 'validate_individual_after_reading', 'individuals_zendro_definition', 'institutions', 'read_one_institution', 'count_institutions', 'csv_table_template_institution', 'institutions_connection', 'validate_institution_for_creation', 'validate_institution_for_updating', 'validate_institution_for_deletion', 'validate_institution_after_reading', 'institutions_zendro_definition', 'monitors', 'read_one_monitor', 'count_monitors', 'csv_table_template_monitor', 'monitors_connection', 'validate_monitor_for_creation', 'validate_monitor_for_updating', 'validate_monitor_for_deletion', 'validate_monitor_after_reading', 'monitors_zendro_definition', 'nodes', 'read_one_node', 'count_nodes', 'csv_table_template_node', 'nodes_connection', 'validate_node_for_creation', 'validate_node_for_updating', 'validate_node_for_deletion', 'validate_node_after_reading', 'nodes_zendro_definition', 'physical_devices', 'read_one_physical_device', 'count_physical_devices', 'csv_table_template_physical_device', 'physical_devices_connection', 'validate_physical_device_for_creation', 'validate_physical_device_for_updating', 'validate_physical_device_for_deletion', 'validate_physical_device_after_reading', 'physical_devices_zendro_definition', 'pipeline_infos', 'read_one_pipeline_info', 'count_pipeline_infos', 'csv_table_template_pipeline_info', 'pipeline_infos_connection', 'validate_pipeline_info_for_creation', 'validate_pipeline_info_for_updating', 'validate_pipeline_info_for_deletion', 'validate_pipeline_info_after_reading', 'pipeline_infos_zendro_definition', 'products', 'read_one_product', 'count_products', 'csv_table_template_product', 'products_connection', 'validate_product_for_creation', 'validate_product_for_updating', 'validate_product_for_deletion', 'validate_product_after_reading', 'products_zendro_definition', 'roles', 'read_one_role', 'count_roles', 'csv_table_template_role', 'roles_connection', 'validate_role_for_creation', 'validate_role_for_updating', 'validate_role_for_deletion', 'validate_role_after_reading', 'roles_zendro_definition', 'role_to_users', 'read_one_role_to_user', 'count_role_to_users', 'csv_table_template_role_to_user', 'role_to_users_connection', 'validate_role_to_user_for_creation', 'validate_role_to_user_for_updating', 'validate_role_to_user_for_deletion', 'validate_role_to_user_after_reading', 'role_to_users_zendro_definition', 'transects', 'read_one_transect', 'count_transects', 'csv_table_template_transect', 'transects_connection', 'validate_transect_for_creation', 'validate_transect_for_updating', 'validate_transect_for_deletion', 'validate_transect_after_reading', 'transects_zendro_definition', 'users', 'read_one_user', 'count_users', 'csv_table_template_user', 'users_connection', 'validate_user_for_creation', 'validate_user_for_updating', 'validate_user_for_deletion', 'validate_user_after_reading', 'users_zendro_definition', 'visits', 'read_one_visit', 'count_visits', 'csv_table_template_visit', 'visits_connection', 'validate_visit_for_creation', 'validate_visit_for_updating', 'validate_visit_for_deletion', 'validate_visit_after_reading', 'visits_zendro_definition')
+    __field_names__ = ('annotations_geom_obs_types', 'read_one_annotations_geom_obs_type', 'count_annotations_geom_obs_types', 'csv_table_template_annotations_geom_obs_type', 'annotations_geom_obs_types_connection', 'validate_annotations_geom_obs_type_for_creation', 'validate_annotations_geom_obs_type_for_updating', 'validate_annotations_geom_obs_type_for_deletion', 'validate_annotations_geom_obs_type_after_reading', 'annotations_geom_obs_types_zendro_definition', 'calendars', 'read_one_calendar', 'count_calendars', 'csv_table_template_calendar', 'calendars_connection', 'validate_calendar_for_creation', 'validate_calendar_for_updating', 'validate_calendar_for_deletion', 'validate_calendar_after_reading', 'calendars_zendro_definition', 'cumulus', 'read_one_cumulus', 'count_cumulus', 'csv_table_template_cumulus', 'cumulus_connection', 'validate_cumulus_for_creation', 'validate_cumulus_for_updating', 'validate_cumulus_for_deletion', 'validate_cumulus_after_reading', 'cumulus_zendro_definition', 'cumulus_criteria', 'read_one_cumulus_criteria', 'count_cumulus_criteria', 'csv_table_template_cumulus_criteria', 'cumulus_criteria_connection', 'validate_cumulus_criteria_for_creation', 'validate_cumulus_criteria_for_updating', 'validate_cumulus_criteria_for_deletion', 'validate_cumulus_criteria_after_reading', 'cumulus_criteria_zendro_definition', 'ecosystem_file_counts', 'deployments', 'read_one_deployment', 'count_deployments', 'csv_table_template_deployment', 'deployments_connection', 'validate_deployment_for_creation', 'validate_deployment_for_updating', 'validate_deployment_for_deletion', 'validate_deployment_after_reading', 'deployments_zendro_definition', 'device_catalogs', 'read_one_device_catalog', 'count_device_catalogs', 'csv_table_template_device_catalog', 'device_catalogs_connection', 'validate_device_catalog_for_creation', 'validate_device_catalog_for_updating', 'validate_device_catalog_for_deletion', 'validate_device_catalog_after_reading', 'device_catalogs_zendro_definition', 'ecosystems', 'read_one_ecosystem', 'count_ecosystems', 'csv_table_template_ecosystem', 'ecosystems_connection', 'validate_ecosystem_for_creation', 'validate_ecosystem_for_updating', 'validate_ecosystem_for_deletion', 'validate_ecosystem_after_reading', 'ecosystems_zendro_definition', 'files', 'read_one_file', 'count_files', 'csv_table_template_file', 'files_connection', 'validate_file_for_creation', 'validate_file_for_updating', 'validate_file_for_deletion', 'validate_file_after_reading', 'files_zendro_definition', 'file_counts', 'read_one_file_count', 'count_file_counts', 'csv_table_template_file_count', 'file_counts_connection', 'validate_file_count_for_creation', 'validate_file_count_for_updating', 'validate_file_count_for_deletion', 'validate_file_count_after_reading', 'file_counts_zendro_definition', 'individuals', 'read_one_individual', 'count_individuals', 'csv_table_template_individual', 'individuals_connection', 'validate_individual_for_creation', 'validate_individual_for_updating', 'validate_individual_for_deletion', 'validate_individual_after_reading', 'individuals_zendro_definition', 'institutions', 'read_one_institution', 'count_institutions', 'csv_table_template_institution', 'institutions_connection', 'validate_institution_for_creation', 'validate_institution_for_updating', 'validate_institution_for_deletion', 'validate_institution_after_reading', 'institutions_zendro_definition', 'monitors', 'read_one_monitor', 'count_monitors', 'csv_table_template_monitor', 'monitors_connection', 'validate_monitor_for_creation', 'validate_monitor_for_updating', 'validate_monitor_for_deletion', 'validate_monitor_after_reading', 'monitors_zendro_definition', 'nodes', 'read_one_node', 'count_nodes', 'csv_table_template_node', 'nodes_connection', 'validate_node_for_creation', 'validate_node_for_updating', 'validate_node_for_deletion', 'validate_node_after_reading', 'nodes_zendro_definition', 'physical_devices', 'read_one_physical_device', 'count_physical_devices', 'csv_table_template_physical_device', 'physical_devices_connection', 'validate_physical_device_for_creation', 'validate_physical_device_for_updating', 'validate_physical_device_for_deletion', 'validate_physical_device_after_reading', 'physical_devices_zendro_definition', 'pipeline_infos', 'read_one_pipeline_info', 'count_pipeline_infos', 'csv_table_template_pipeline_info', 'pipeline_infos_connection', 'validate_pipeline_info_for_creation', 'validate_pipeline_info_for_updating', 'validate_pipeline_info_for_deletion', 'validate_pipeline_info_after_reading', 'pipeline_infos_zendro_definition', 'products', 'read_one_product', 'count_products', 'csv_table_template_product', 'products_connection', 'validate_product_for_creation', 'validate_product_for_updating', 'validate_product_for_deletion', 'validate_product_after_reading', 'products_zendro_definition', 'roles', 'read_one_role', 'count_roles', 'csv_table_template_role', 'roles_connection', 'validate_role_for_creation', 'validate_role_for_updating', 'validate_role_for_deletion', 'validate_role_after_reading', 'roles_zendro_definition', 'role_to_users', 'read_one_role_to_user', 'count_role_to_users', 'csv_table_template_role_to_user', 'role_to_users_connection', 'validate_role_to_user_for_creation', 'validate_role_to_user_for_updating', 'validate_role_to_user_for_deletion', 'validate_role_to_user_after_reading', 'role_to_users_zendro_definition', 'transects', 'read_one_transect', 'count_transects', 'csv_table_template_transect', 'transects_connection', 'validate_transect_for_creation', 'validate_transect_for_updating', 'validate_transect_for_deletion', 'validate_transect_after_reading', 'transects_zendro_definition', 'users', 'read_one_user', 'count_users', 'csv_table_template_user', 'users_connection', 'validate_user_for_creation', 'validate_user_for_updating', 'validate_user_for_deletion', 'validate_user_after_reading', 'users_zendro_definition', 'visits', 'read_one_visit', 'count_visits', 'csv_table_template_visit', 'visits_connection', 'validate_visit_for_creation', 'validate_visit_for_updating', 'validate_visit_for_deletion', 'validate_visit_after_reading', 'visits_zendro_definition')
     annotations_geom_obs_types = sgqlc.types.Field(sgqlc.types.list_of('annotations_geom_obs_type'), graphql_name='annotations_geom_obs_types', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
         ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderAnnotations_geom_obs_typeInput), graphql_name='order', default=None)),
@@ -1958,6 +1932,8 @@ class Query(sgqlc.types.Type):
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('add_file_to', sgqlc.types.Arg(ID, graphql_name='addFileTo', default=None)),
+        ('add_user_to', sgqlc.types.Arg(ID, graphql_name='addUserTo', default=None)),
+        ('add_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='addPipeline_annotation', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -1977,6 +1953,10 @@ class Query(sgqlc.types.Type):
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('add_file_to', sgqlc.types.Arg(ID, graphql_name='addFileTo', default=None)),
         ('remove_file_to', sgqlc.types.Arg(ID, graphql_name='removeFileTo', default=None)),
+        ('add_user_to', sgqlc.types.Arg(ID, graphql_name='addUserTo', default=None)),
+        ('remove_user_to', sgqlc.types.Arg(ID, graphql_name='removeUserTo', default=None)),
+        ('add_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='addPipeline_annotation', default=None)),
+        ('remove_pipeline_annotation', sgqlc.types.Arg(ID, graphql_name='removePipeline_annotation', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2159,60 +2139,6 @@ class Query(sgqlc.types.Type):
         ('ecosystem_id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='ecosystem_id', default=None)),
 ))
     )
-    delivered_files = sgqlc.types.Field(sgqlc.types.list_of('delivered_files'), graphql_name='delivered_files', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderDelivered_filesInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationInput), graphql_name='pagination', default=None)),
-))
-    )
-    read_one_delivered_files = sgqlc.types.Field('delivered_files', graphql_name='readOneDelivered_files', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-))
-    )
-    count_delivered_files = sgqlc.types.Field(Int, graphql_name='countDelivered_files', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-))
-    )
-    csv_table_template_delivered_files = sgqlc.types.Field(sgqlc.types.list_of(String), graphql_name='csvTableTemplateDelivered_files')
-    delivered_files_connection = sgqlc.types.Field(Delivered_filesConnection, graphql_name='delivered_filesConnection', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderDelivered_filesInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationCursorInput), graphql_name='pagination', default=None)),
-))
-    )
-    validate_delivered_files_for_creation = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateDelivered_filesForCreation', args=sgqlc.types.ArgDict((
-        ('who_delivers', sgqlc.types.Arg(String, graphql_name='who_delivers', default=None)),
-        ('reception_date', sgqlc.types.Arg(Date, graphql_name='reception_date', default=None)),
-        ('total_files', sgqlc.types.Arg(Int, graphql_name='total_files', default=None)),
-        ('audio_files', sgqlc.types.Arg(Int, graphql_name='audio_files', default=None)),
-        ('image_files', sgqlc.types.Arg(Int, graphql_name='image_files', default=None)),
-        ('video_files', sgqlc.types.Arg(Int, graphql_name='video_files', default=None)),
-        ('add_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='addNode_delivered_files', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
-    validate_delivered_files_for_updating = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateDelivered_filesForUpdating', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-        ('who_delivers', sgqlc.types.Arg(String, graphql_name='who_delivers', default=None)),
-        ('reception_date', sgqlc.types.Arg(Date, graphql_name='reception_date', default=None)),
-        ('total_files', sgqlc.types.Arg(Int, graphql_name='total_files', default=None)),
-        ('audio_files', sgqlc.types.Arg(Int, graphql_name='audio_files', default=None)),
-        ('image_files', sgqlc.types.Arg(Int, graphql_name='image_files', default=None)),
-        ('video_files', sgqlc.types.Arg(Int, graphql_name='video_files', default=None)),
-        ('add_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='addNode_delivered_files', default=None)),
-        ('remove_node_delivered_files', sgqlc.types.Arg(ID, graphql_name='removeNode_delivered_files', default=None)),
-        ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
-))
-    )
-    validate_delivered_files_for_deletion = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateDelivered_filesForDeletion', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-))
-    )
-    validate_delivered_files_after_reading = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateDelivered_filesAfterReading', args=sgqlc.types.ArgDict((
-        ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
-))
-    )
-    delivered_files_zendro_definition = sgqlc.types.Field(GraphQLJSONObject, graphql_name='delivered_filesZendroDefinition')
     deployments = sgqlc.types.Field(sgqlc.types.list_of('deployment'), graphql_name='deployments', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchDeploymentInput, graphql_name='search', default=None)),
         ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderDeploymentInput), graphql_name='order', default=None)),
@@ -2394,6 +2320,7 @@ class Query(sgqlc.types.Type):
     )
     validate_file_for_creation = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateFileForCreation', args=sgqlc.types.ArgDict((
         ('url', sgqlc.types.Arg(String, graphql_name='url', default=None)),
+        ('date_deployment_device', sgqlc.types.Arg(Date, graphql_name='date_deployment_device', default=None)),
         ('type', sgqlc.types.Arg(String, graphql_name='type', default=None)),
         ('id_alfresco', sgqlc.types.Arg(String, graphql_name='id_alfresco', default=None)),
         ('storage', sgqlc.types.Arg(String, graphql_name='storage', default=None)),
@@ -2408,6 +2335,7 @@ class Query(sgqlc.types.Type):
     validate_file_for_updating = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validateFileForUpdating', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('url', sgqlc.types.Arg(String, graphql_name='url', default=None)),
+        ('date_deployment_device', sgqlc.types.Arg(Date, graphql_name='date_deployment_device', default=None)),
         ('type', sgqlc.types.Arg(String, graphql_name='type', default=None)),
         ('id_alfresco', sgqlc.types.Arg(String, graphql_name='id_alfresco', default=None)),
         ('storage', sgqlc.types.Arg(String, graphql_name='storage', default=None)),
@@ -2681,7 +2609,6 @@ class Query(sgqlc.types.Type):
         ('add_deployments', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDeployments', default=None)),
         ('add_individuals', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addIndividuals', default=None)),
         ('add_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addTransects', default=None)),
-        ('add_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDelivered_files', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2706,8 +2633,6 @@ class Query(sgqlc.types.Type):
         ('remove_individuals', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeIndividuals', default=None)),
         ('add_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addTransects', default=None)),
         ('remove_transects', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeTransects', default=None)),
-        ('add_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addDelivered_files', default=None)),
-        ('remove_delivered_files', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeDelivered_files', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2800,12 +2725,12 @@ class Query(sgqlc.types.Type):
     validate_pipeline_info_for_creation = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='validatePipeline_infoForCreation', args=sgqlc.types.ArgDict((
         ('version', sgqlc.types.Arg(String, graphql_name='version', default=None)),
         ('commit_dvc_of_data_ref', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_data_ref', default=None)),
-        ('commit_dvc_of_model', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_model', default=None)),
         ('url_repo_model', sgqlc.types.Arg(String, graphql_name='url_repo_model', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
         ('add_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addPipeline_products', default=None)),
+        ('add_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAnnotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2813,13 +2738,14 @@ class Query(sgqlc.types.Type):
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('version', sgqlc.types.Arg(String, graphql_name='version', default=None)),
         ('commit_dvc_of_data_ref', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_data_ref', default=None)),
-        ('commit_dvc_of_model', sgqlc.types.Arg(String, graphql_name='commit_dvc_of_model', default=None)),
         ('url_repo_model', sgqlc.types.Arg(String, graphql_name='url_repo_model', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
         ('add_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addPipeline_products', default=None)),
         ('remove_pipeline_products', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removePipeline_products', default=None)),
+        ('add_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAnnotations', default=None)),
+        ('remove_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeAnnotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2860,13 +2786,11 @@ class Query(sgqlc.types.Type):
         ('producer', sgqlc.types.Arg(String, graphql_name='producer', default=None)),
         ('project', sgqlc.types.Arg(String, graphql_name='project', default=None)),
         ('metadata', sgqlc.types.Arg(JSON, graphql_name='metadata', default=None)),
-        ('audio_grid_id', sgqlc.types.Arg(Int, graphql_name='audio_grid_id', default=None)),
-        ('audio_distance_to_mean', sgqlc.types.Arg(Float, graphql_name='audio_distance_to_mean', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
+        ('add_file_assoc', sgqlc.types.Arg(ID, graphql_name='addFileAssoc', default=None)),
         ('add_pipeline', sgqlc.types.Arg(ID, graphql_name='addPipeline', default=None)),
-        ('add_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addFileAssoc', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -2878,15 +2802,13 @@ class Query(sgqlc.types.Type):
         ('producer', sgqlc.types.Arg(String, graphql_name='producer', default=None)),
         ('project', sgqlc.types.Arg(String, graphql_name='project', default=None)),
         ('metadata', sgqlc.types.Arg(JSON, graphql_name='metadata', default=None)),
-        ('audio_grid_id', sgqlc.types.Arg(Int, graphql_name='audio_grid_id', default=None)),
-        ('audio_distance_to_mean', sgqlc.types.Arg(Float, graphql_name='audio_distance_to_mean', default=None)),
         ('created_at', sgqlc.types.Arg(DateTime, graphql_name='createdAt', default=None)),
         ('updated_at', sgqlc.types.Arg(DateTime, graphql_name='updatedAt', default=None)),
         ('comments', sgqlc.types.Arg(String, graphql_name='comments', default=None)),
+        ('add_file_assoc', sgqlc.types.Arg(ID, graphql_name='addFileAssoc', default=None)),
+        ('remove_file_assoc', sgqlc.types.Arg(ID, graphql_name='removeFileAssoc', default=None)),
         ('add_pipeline', sgqlc.types.Arg(ID, graphql_name='addPipeline', default=None)),
         ('remove_pipeline', sgqlc.types.Arg(ID, graphql_name='removePipeline', default=None)),
-        ('add_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addFileAssoc', default=None)),
-        ('remove_file_assoc', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeFileAssoc', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -3078,6 +3000,7 @@ class Query(sgqlc.types.Type):
         ('add_institutions', sgqlc.types.Arg(ID, graphql_name='addInstitutions', default=None)),
         ('add_roles', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addRoles', default=None)),
         ('add_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAssociated_cumulus', default=None)),
+        ('add_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUser_annotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -3096,6 +3019,8 @@ class Query(sgqlc.types.Type):
         ('remove_roles', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeRoles', default=None)),
         ('add_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addAssociated_cumulus', default=None)),
         ('remove_associated_cumulus', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeAssociated_cumulus', default=None)),
+        ('add_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='addUser_annotations', default=None)),
+        ('remove_user_annotations', sgqlc.types.Arg(sgqlc.types.list_of(ID), graphql_name='removeUser_annotations', default=None)),
         ('skip_associations_existence_checks', sgqlc.types.Arg(Boolean, graphql_name='skipAssociationsExistenceChecks', default=False)),
 ))
     )
@@ -3252,7 +3177,7 @@ class VisitEdge(sgqlc.types.Type):
 
 class annotations_geom_obs_type(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'classified_by', 'classification_method', 'observation_type', 'confidence', 'geometry', 'video_frame_num', 'frequency_min', 'frequency_max', 'time_min', 'time_max', 'updated_at', 'created_at', 'file_id', 'file_to', 'as_cursor')
+    __field_names__ = ('id', 'classified_by', 'classification_method', 'observation_type', 'confidence', 'geometry', 'video_frame_num', 'frequency_min', 'frequency_max', 'time_min', 'time_max', 'updated_at', 'created_at', 'file_id', 'user_id', 'pipeline_id', 'file_to', 'user_to', 'pipeline_annotation', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     classified_by = sgqlc.types.Field(String, graphql_name='classified_by')
     classification_method = sgqlc.types.Field(String, graphql_name='classification_method')
@@ -3267,8 +3192,18 @@ class annotations_geom_obs_type(sgqlc.types.Type):
     updated_at = sgqlc.types.Field(DateTime, graphql_name='updatedAt')
     created_at = sgqlc.types.Field(DateTime, graphql_name='createdAt')
     file_id = sgqlc.types.Field(Int, graphql_name='file_id')
+    user_id = sgqlc.types.Field(Int, graphql_name='user_id')
+    pipeline_id = sgqlc.types.Field(Int, graphql_name='pipeline_id')
     file_to = sgqlc.types.Field('file', graphql_name='fileTo', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchFileInput, graphql_name='search', default=None)),
+))
+    )
+    user_to = sgqlc.types.Field('user', graphql_name='userTo', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchUserInput, graphql_name='search', default=None)),
+))
+    )
+    pipeline_annotation = sgqlc.types.Field('pipeline_info', graphql_name='pipeline_annotation', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchPipeline_infoInput, graphql_name='search', default=None)),
 ))
     )
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
@@ -3458,24 +3393,6 @@ class cumulus_criteria(sgqlc.types.Type):
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
 
 
-class delivered_files(sgqlc.types.Type):
-    __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'who_delivers', 'reception_date', 'total_files', 'audio_files', 'image_files', 'video_files', 'node_id', 'node_delivered_files', 'as_cursor')
-    id = sgqlc.types.Field(ID, graphql_name='id')
-    who_delivers = sgqlc.types.Field(String, graphql_name='who_delivers')
-    reception_date = sgqlc.types.Field(Date, graphql_name='reception_date')
-    total_files = sgqlc.types.Field(Int, graphql_name='total_files')
-    audio_files = sgqlc.types.Field(Int, graphql_name='audio_files')
-    image_files = sgqlc.types.Field(Int, graphql_name='image_files')
-    video_files = sgqlc.types.Field(Int, graphql_name='video_files')
-    node_id = sgqlc.types.Field(Int, graphql_name='node_id')
-    node_delivered_files = sgqlc.types.Field('node', graphql_name='node_delivered_files', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchNodeInput, graphql_name='search', default=None)),
-))
-    )
-    as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
-
-
 class deployment(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
     __field_names__ = ('id', 'date_deployment', 'latitude', 'longitude', 'altitude', 'comments', 'metadata', 'kobo_url', 'device_id', 'node_id', 'cumulus_id', 'device', 'node', 'cumulus', 'files_filter', 'files_connection', 'count_filtered_files', 'as_cursor')
@@ -3596,16 +3513,16 @@ class ecosystem_files(sgqlc.types.Type):
 
 class file(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'url', 'type', 'id_alfresco', 'storage', 'updated_at', 'created_at', 'deployment_id', 'product_ids', 'associated_deployment', 'file_annotations_filter', 'file_annotations_connection', 'count_filtered_file_annotations', 'file_products_filter', 'file_products_connection', 'count_filtered_file_products', 'as_cursor')
+    __field_names__ = ('id', 'url', 'date_deployment_device', 'type', 'id_alfresco', 'storage', 'updated_at', 'created_at', 'deployment_id', 'associated_deployment', 'file_annotations_filter', 'file_annotations_connection', 'count_filtered_file_annotations', 'file_products_filter', 'file_products_connection', 'count_filtered_file_products', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     url = sgqlc.types.Field(String, graphql_name='url')
+    date_deployment_device = sgqlc.types.Field(Date, graphql_name='date_deployment_device')
     type = sgqlc.types.Field(String, graphql_name='type')
     id_alfresco = sgqlc.types.Field(String, graphql_name='id_alfresco')
     storage = sgqlc.types.Field(String, graphql_name='storage')
     updated_at = sgqlc.types.Field(DateTime, graphql_name='updatedAt')
     created_at = sgqlc.types.Field(DateTime, graphql_name='createdAt')
     deployment_id = sgqlc.types.Field(Int, graphql_name='deployment_id')
-    product_ids = sgqlc.types.Field(sgqlc.types.list_of(Int), graphql_name='product_ids')
     associated_deployment = sgqlc.types.Field(deployment, graphql_name='associated_deployment', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchDeploymentInput, graphql_name='search', default=None)),
 ))
@@ -3763,7 +3680,7 @@ class monitor(sgqlc.types.Type):
 
 class node(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'nomenclatura', 'con_socio', 'fid', 'location', 'cat_integr', 'cumulus_id', 'ecosystem_id', 'cumulus_node', 'unique_visit_pristine', 'unique_visit_disturbed', 'ecosystems', 'deployments_filter', 'deployments_connection', 'count_filtered_deployments', 'individuals_filter', 'individuals_connection', 'count_filtered_individuals', 'transects_filter', 'transects_connection', 'count_filtered_transects', 'delivered_files_filter', 'delivered_files_connection', 'count_filtered_delivered_files', 'as_cursor')
+    __field_names__ = ('id', 'nomenclatura', 'con_socio', 'fid', 'location', 'cat_integr', 'cumulus_id', 'ecosystem_id', 'cumulus_node', 'unique_visit_pristine', 'unique_visit_disturbed', 'ecosystems', 'deployments_filter', 'deployments_connection', 'count_filtered_deployments', 'individuals_filter', 'individuals_connection', 'count_filtered_individuals', 'transects_filter', 'transects_connection', 'count_filtered_transects', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     nomenclatura = sgqlc.types.Field(String, graphql_name='nomenclatura')
     con_socio = sgqlc.types.Field(Int, graphql_name='con_socio')
@@ -3836,22 +3753,6 @@ class node(sgqlc.types.Type):
         ('search', sgqlc.types.Arg(searchTransectInput, graphql_name='search', default=None)),
 ))
     )
-    delivered_files_filter = sgqlc.types.Field(sgqlc.types.list_of(delivered_files), graphql_name='delivered_filesFilter', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderDelivered_filesInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationInput), graphql_name='pagination', default=None)),
-))
-    )
-    delivered_files_connection = sgqlc.types.Field(Delivered_filesConnection, graphql_name='delivered_filesConnection', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderDelivered_filesInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationCursorInput), graphql_name='pagination', default=None)),
-))
-    )
-    count_filtered_delivered_files = sgqlc.types.Field(Int, graphql_name='countFilteredDelivered_files', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchDelivered_filesInput, graphql_name='search', default=None)),
-))
-    )
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
 
 
@@ -3903,11 +3804,10 @@ class physical_device(sgqlc.types.Type):
 
 class pipeline_info(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'version', 'commit_dvc_of_data_ref', 'commit_dvc_of_model', 'url_repo_model', 'updated_at', 'created_at', 'comments', 'pipeline_products_filter', 'pipeline_products_connection', 'count_filtered_pipeline_products', 'as_cursor')
+    __field_names__ = ('id', 'version', 'commit_dvc_of_data_ref', 'url_repo_model', 'updated_at', 'created_at', 'comments', 'pipeline_products_filter', 'pipeline_products_connection', 'count_filtered_pipeline_products', 'annotations_filter', 'annotations_connection', 'count_filtered_annotations', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     version = sgqlc.types.Field(String, graphql_name='version')
     commit_dvc_of_data_ref = sgqlc.types.Field(String, graphql_name='commit_dvc_of_data_ref')
-    commit_dvc_of_model = sgqlc.types.Field(String, graphql_name='commit_dvc_of_model')
     url_repo_model = sgqlc.types.Field(String, graphql_name='url_repo_model')
     updated_at = sgqlc.types.Field(DateTime, graphql_name='updatedAt')
     created_at = sgqlc.types.Field(DateTime, graphql_name='createdAt')
@@ -3928,12 +3828,28 @@ class pipeline_info(sgqlc.types.Type):
         ('search', sgqlc.types.Arg(searchProductInput, graphql_name='search', default=None)),
 ))
     )
+    annotations_filter = sgqlc.types.Field(sgqlc.types.list_of(annotations_geom_obs_type), graphql_name='annotationsFilter', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
+        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderAnnotations_geom_obs_typeInput), graphql_name='order', default=None)),
+        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationInput), graphql_name='pagination', default=None)),
+))
+    )
+    annotations_connection = sgqlc.types.Field(Annotations_geom_obs_typeConnection, graphql_name='annotationsConnection', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
+        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderAnnotations_geom_obs_typeInput), graphql_name='order', default=None)),
+        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationCursorInput), graphql_name='pagination', default=None)),
+))
+    )
+    count_filtered_annotations = sgqlc.types.Field(Int, graphql_name='countFilteredAnnotations', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
+))
+    )
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
 
 
 class product(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'type', 'url', 'observation_type', 'producer', 'project', 'metadata', 'audio_grid_id', 'audio_distance_to_mean', 'created_at', 'updated_at', 'comments', 'file_ids', 'pipeline_id', 'pipeline', 'file_assoc_filter', 'file_assoc_connection', 'count_filtered_file_assoc', 'as_cursor')
+    __field_names__ = ('id', 'type', 'url', 'observation_type', 'producer', 'project', 'metadata', 'created_at', 'updated_at', 'comments', 'pipeline_id', 'file_id', 'file_assoc', 'pipeline', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     type = sgqlc.types.Field(String, graphql_name='type')
     url = sgqlc.types.Field(String, graphql_name='url')
@@ -3941,31 +3857,17 @@ class product(sgqlc.types.Type):
     producer = sgqlc.types.Field(String, graphql_name='producer')
     project = sgqlc.types.Field(String, graphql_name='project')
     metadata = sgqlc.types.Field(JSON, graphql_name='metadata')
-    audio_grid_id = sgqlc.types.Field(Int, graphql_name='audio_grid_id')
-    audio_distance_to_mean = sgqlc.types.Field(Float, graphql_name='audio_distance_to_mean')
     created_at = sgqlc.types.Field(DateTime, graphql_name='createdAt')
     updated_at = sgqlc.types.Field(DateTime, graphql_name='updatedAt')
     comments = sgqlc.types.Field(String, graphql_name='comments')
-    file_ids = sgqlc.types.Field(sgqlc.types.list_of(Int), graphql_name='file_ids')
     pipeline_id = sgqlc.types.Field(Int, graphql_name='pipeline_id')
+    file_id = sgqlc.types.Field(Int, graphql_name='file_id')
+    file_assoc = sgqlc.types.Field(file, graphql_name='fileAssoc', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchFileInput, graphql_name='search', default=None)),
+))
+    )
     pipeline = sgqlc.types.Field(pipeline_info, graphql_name='pipeline', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchPipeline_infoInput, graphql_name='search', default=None)),
-))
-    )
-    file_assoc_filter = sgqlc.types.Field(sgqlc.types.list_of(file), graphql_name='fileAssocFilter', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchFileInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderFileInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationInput), graphql_name='pagination', default=None)),
-))
-    )
-    file_assoc_connection = sgqlc.types.Field(FileConnection, graphql_name='fileAssocConnection', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchFileInput, graphql_name='search', default=None)),
-        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderFileInput), graphql_name='order', default=None)),
-        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationCursorInput), graphql_name='pagination', default=None)),
-))
-    )
-    count_filtered_file_assoc = sgqlc.types.Field(Int, graphql_name='countFilteredFileAssoc', args=sgqlc.types.ArgDict((
-        ('search', sgqlc.types.Arg(searchFileInput, graphql_name='search', default=None)),
 ))
     )
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')
@@ -4027,7 +3929,7 @@ class transect(sgqlc.types.Type):
 
 class user(sgqlc.types.Type):
     __schema__ = sipecam_zendro_schema
-    __field_names__ = ('id', 'username', 'password', 'first_name', 'last_name', 'email', 'is_active', 'last_login', 'institution_id', 'cumulus_ids', 'institutions', 'roles_filter', 'roles_connection', 'count_filtered_roles', 'associated_cumulus_filter', 'associated_cumulus_connection', 'count_filtered_associated_cumulus', 'as_cursor')
+    __field_names__ = ('id', 'username', 'password', 'first_name', 'last_name', 'email', 'is_active', 'last_login', 'institution_id', 'cumulus_ids', 'institutions', 'roles_filter', 'roles_connection', 'count_filtered_roles', 'associated_cumulus_filter', 'associated_cumulus_connection', 'count_filtered_associated_cumulus', 'user_annotations_filter', 'user_annotations_connection', 'count_filtered_user_annotations', 'as_cursor')
     id = sgqlc.types.Field(ID, graphql_name='id')
     username = sgqlc.types.Field(String, graphql_name='username')
     password = sgqlc.types.Field(String, graphql_name='password')
@@ -4072,6 +3974,22 @@ class user(sgqlc.types.Type):
     )
     count_filtered_associated_cumulus = sgqlc.types.Field(Int, graphql_name='countFilteredAssociated_cumulus', args=sgqlc.types.ArgDict((
         ('search', sgqlc.types.Arg(searchCumulusInput, graphql_name='search', default=None)),
+))
+    )
+    user_annotations_filter = sgqlc.types.Field(sgqlc.types.list_of(annotations_geom_obs_type), graphql_name='user_annotationsFilter', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
+        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderAnnotations_geom_obs_typeInput), graphql_name='order', default=None)),
+        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationInput), graphql_name='pagination', default=None)),
+))
+    )
+    user_annotations_connection = sgqlc.types.Field(Annotations_geom_obs_typeConnection, graphql_name='user_annotationsConnection', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
+        ('order', sgqlc.types.Arg(sgqlc.types.list_of(orderAnnotations_geom_obs_typeInput), graphql_name='order', default=None)),
+        ('pagination', sgqlc.types.Arg(sgqlc.types.non_null(paginationCursorInput), graphql_name='pagination', default=None)),
+))
+    )
+    count_filtered_user_annotations = sgqlc.types.Field(Int, graphql_name='countFilteredUser_annotations', args=sgqlc.types.ArgDict((
+        ('search', sgqlc.types.Arg(searchAnnotations_geom_obs_typeInput, graphql_name='search', default=None)),
 ))
     )
     as_cursor = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='asCursor')

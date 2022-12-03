@@ -347,6 +347,24 @@
                   }
                 },
                 {
+                  "defaultValue": null,
+                  "name": "addUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addPipeline_annotation",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -502,6 +520,42 @@
                 {
                   "defaultValue": null,
                   "name": "removeFileTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addPipeline_annotation",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removePipeline_annotation",
                   "type": {
                     "kind": "SCALAR",
                     "name": "ID",
@@ -1984,412 +2038,6 @@
                   "name": "search",
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderDelivered_filesInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "delivered_files",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "readOneDelivered_files",
-              "type": {
-                "kind": "OBJECT",
-                "name": "delivered_files",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "countDelivered_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "csvTableTemplateDelivered_files",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderDelivered_filesInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationCursorInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "delivered_filesConnection",
-              "type": {
-                "kind": "OBJECT",
-                "name": "Delivered_filesConnection",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "who_delivers",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "reception_date",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "total_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "image_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "video_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "validateDelivered_filesForCreation",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "who_delivers",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "reception_date",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "total_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "image_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "video_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "validateDelivered_filesForUpdating",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "validateDelivered_filesForDeletion",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "validateDelivered_filesAfterReading",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "delivered_filesZendroDefinition",
-              "type": {
-                "kind": "SCALAR",
-                "name": "GraphQLJSONObject",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
                     "name": "searchDeploymentInput",
                     "ofType": null
                   }
@@ -3775,6 +3423,15 @@
                 },
                 {
                   "defaultValue": null,
+                  "name": "date_deployment_device",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Date",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
                   "name": "type",
                   "type": {
                     "kind": "SCALAR",
@@ -3895,6 +3552,15 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "date_deployment_device",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Date",
                     "ofType": null
                   }
                 },
@@ -6017,19 +5683,6 @@
                   }
                 },
                 {
-                  "defaultValue": null,
-                  "name": "addDelivered_files",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -6250,32 +5903,6 @@
                 {
                   "defaultValue": null,
                   "name": "removeTransects",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addDelivered_files",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeDelivered_files",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -6985,15 +6612,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "commit_dvc_of_model",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "url_repo_model",
                   "type": {
                     "kind": "SCALAR",
@@ -7031,6 +6649,19 @@
                 {
                   "defaultValue": null,
                   "name": "addPipeline_products",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addAnnotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -7097,15 +6728,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "commit_dvc_of_model",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "url_repo_model",
                   "type": {
                     "kind": "SCALAR",
@@ -7156,6 +6778,32 @@
                 {
                   "defaultValue": null,
                   "name": "removePipeline_products",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addAnnotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeAnnotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -7457,24 +7105,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "audio_grid_id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_distance_to_mean",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "createdAt",
                   "type": {
                     "kind": "SCALAR",
@@ -7502,7 +7132,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addPipeline",
+                  "name": "addFileAssoc",
                   "type": {
                     "kind": "SCALAR",
                     "name": "ID",
@@ -7511,15 +7141,11 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addFileAssoc",
+                  "name": "addPipeline",
                   "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
                   }
                 },
                 {
@@ -7614,24 +7240,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "audio_grid_id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_distance_to_mean",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "createdAt",
                   "type": {
                     "kind": "SCALAR",
@@ -7659,6 +7267,24 @@
                 },
                 {
                   "defaultValue": null,
+                  "name": "addFileAssoc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeFileAssoc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
                   "name": "addPipeline",
                   "type": {
                     "kind": "SCALAR",
@@ -7673,32 +7299,6 @@
                     "kind": "SCALAR",
                     "name": "ID",
                     "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addFileAssoc",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeFileAssoc",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
                   }
                 },
                 {
@@ -9130,6 +8730,19 @@
                   }
                 },
                 {
+                  "defaultValue": null,
+                  "name": "addUser_annotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -9288,6 +8901,32 @@
                 {
                   "defaultValue": null,
                   "name": "removeAssociated_cumulus",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addUser_annotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeUser_annotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -10008,6 +9647,12 @@
             },
             {
               "name": "file_id"
+            },
+            {
+              "name": "user_id"
+            },
+            {
+              "name": "pipeline_id"
             }
           ],
           "fields": null,
@@ -10354,6 +9999,24 @@
               }
             },
             {
+              "args": [],
+              "name": "user_id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "name": "pipeline_id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
               "args": [
                 {
                   "defaultValue": null,
@@ -10369,6 +10032,44 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "file",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchUserInput",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "userTo",
+              "type": {
+                "kind": "OBJECT",
+                "name": "user",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchPipeline_infoInput",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "pipeline_annotation",
+              "type": {
+                "kind": "OBJECT",
+                "name": "pipeline_info",
                 "ofType": null
               }
             },
@@ -10496,6 +10197,9 @@
               "name": "url"
             },
             {
+              "name": "date_deployment_device"
+            },
+            {
               "name": "type"
             },
             {
@@ -10512,9 +10216,6 @@
             },
             {
               "name": "deployment_id"
-            },
-            {
-              "name": "product_ids"
             }
           ],
           "fields": null,
@@ -10542,6 +10243,15 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "name": "date_deployment_device",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Date",
                 "ofType": null
               }
             },
@@ -10597,19 +10307,6 @@
                 "kind": "SCALAR",
                 "name": "Int",
                 "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "product_ids",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
               }
             },
             {
@@ -10875,6 +10572,15 @@
           "interfaces": [],
           "kind": "OBJECT",
           "name": "file",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "Date",
           "possibleTypes": null
         },
         {
@@ -14510,119 +14216,6 @@
               }
             },
             {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderDelivered_filesInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "delivered_filesFilter",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderDelivered_filesInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationCursorInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "delivered_filesConnection",
-              "type": {
-                "kind": "OBJECT",
-                "name": "Delivered_filesConnection",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchDelivered_filesInput",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "countFilteredDelivered_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
               "args": [],
               "name": "asCursor",
               "type": {
@@ -15059,15 +14652,6 @@
           "interfaces": [],
           "kind": "OBJECT",
           "name": "visit",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "Date",
           "possibleTypes": null
         },
         {
@@ -16454,326 +16038,6 @@
         },
         {
           "enumValues": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "defaultValue": null,
-              "name": "field",
-              "type": {
-                "kind": "ENUM",
-                "name": "delivered_filesField",
-                "ofType": null
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "value",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "valueType",
-              "type": {
-                "kind": "ENUM",
-                "name": "InputType",
-                "ofType": null
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "operator",
-              "type": {
-                "kind": "ENUM",
-                "name": "GenericPrestoSqlOperator",
-                "ofType": null
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "search",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "searchDelivered_filesInput",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "interfaces": null,
-          "kind": "INPUT_OBJECT",
-          "name": "searchDelivered_filesInput",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": [
-            {
-              "name": "id"
-            },
-            {
-              "name": "who_delivers"
-            },
-            {
-              "name": "reception_date"
-            },
-            {
-              "name": "total_files"
-            },
-            {
-              "name": "audio_files"
-            },
-            {
-              "name": "image_files"
-            },
-            {
-              "name": "video_files"
-            },
-            {
-              "name": "node_id"
-            }
-          ],
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "ENUM",
-          "name": "delivered_filesField",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "defaultValue": null,
-              "name": "field",
-              "type": {
-                "kind": "ENUM",
-                "name": "delivered_filesField",
-                "ofType": null
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "order",
-              "type": {
-                "kind": "ENUM",
-                "name": "Order",
-                "ofType": null
-              }
-            }
-          ],
-          "interfaces": null,
-          "kind": "INPUT_OBJECT",
-          "name": "orderDelivered_filesInput",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "name": "id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "who_delivers",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "reception_date",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Date",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "total_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "audio_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "image_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "video_files",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "node_id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchNodeInput",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "node_delivered_files",
-              "type": {
-                "kind": "OBJECT",
-                "name": "node",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "asCursor",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "delivered_files",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "name": "edges",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Delivered_filesEdge",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "delivered_files",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "pageInfo",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "pageInfo",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "Delivered_filesConnection",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "name": "cursor",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "node",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "Delivered_filesEdge",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
           "fields": [
             {
               "args": [],
@@ -17320,6 +16584,119 @@
                 }
               ],
               "name": "countFilteredAssociated_cumulus",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "order",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "orderAnnotations_geom_obs_typeInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "pagination",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "paginationInput",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "name": "user_annotationsFilter",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "annotations_geom_obs_type",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "order",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "orderAnnotations_geom_obs_typeInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "pagination",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "paginationCursorInput",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "name": "user_annotationsConnection",
+              "type": {
+                "kind": "OBJECT",
+                "name": "Annotations_geom_obs_typeConnection",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "countFilteredUser_annotations",
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
@@ -18040,6 +17417,91 @@
         },
         {
           "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "name": "edges",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Annotations_geom_obs_typeEdge",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "name": "annotations_geom_obs_types",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "annotations_geom_obs_type",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "name": "pageInfo",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "pageInfo",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "Annotations_geom_obs_typeConnection",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "name": "cursor",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "name": "node",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "annotations_geom_obs_type",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "Annotations_geom_obs_typeEdge",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
           "fields": null,
           "inputFields": [
             {
@@ -18461,91 +17923,6 @@
         },
         {
           "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "name": "edges",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Annotations_geom_obs_typeEdge",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "annotations_geom_obs_types",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "annotations_geom_obs_type",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "pageInfo",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "pageInfo",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "Annotations_geom_obs_typeConnection",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "name": "cursor",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "name": "node",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "annotations_geom_obs_type",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "Annotations_geom_obs_typeEdge",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
           "fields": null,
           "inputFields": [
             {
@@ -18627,12 +18004,6 @@
               "name": "metadata"
             },
             {
-              "name": "audio_grid_id"
-            },
-            {
-              "name": "audio_distance_to_mean"
-            },
-            {
               "name": "createdAt"
             },
             {
@@ -18642,10 +18013,10 @@
               "name": "comments"
             },
             {
-              "name": "file_ids"
+              "name": "pipeline_id"
             },
             {
-              "name": "pipeline_id"
+              "name": "file_id"
             }
           ],
           "fields": null,
@@ -18751,24 +18122,6 @@
             },
             {
               "args": [],
-              "name": "audio_grid_id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "audio_distance_to_mean",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
               "name": "createdAt",
               "type": {
                 "kind": "SCALAR",
@@ -18796,23 +18149,38 @@
             },
             {
               "args": [],
-              "name": "file_ids",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
               "name": "pipeline_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "name": "file_id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchFileInput",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "fileAssoc",
+              "type": {
+                "kind": "OBJECT",
+                "name": "file",
                 "ofType": null
               }
             },
@@ -18832,119 +18200,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "pipeline_info",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchFileInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderFileInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "fileAssocFilter",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "file",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchFileInput",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "order",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "orderFileInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "pagination",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "paginationCursorInput",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "fileAssocConnection",
-              "type": {
-                "kind": "OBJECT",
-                "name": "FileConnection",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "search",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "searchFileInput",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "countFilteredFileAssoc",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
                 "ofType": null
               }
             },
@@ -19039,9 +18294,6 @@
               "name": "commit_dvc_of_data_ref"
             },
             {
-              "name": "commit_dvc_of_model"
-            },
-            {
               "name": "url_repo_model"
             },
             {
@@ -19085,15 +18337,6 @@
             {
               "args": [],
               "name": "commit_dvc_of_data_ref",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "name": "commit_dvc_of_model",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -19243,6 +18486,119 @@
                 }
               ],
               "name": "countFilteredPipeline_products",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "order",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "orderAnnotations_geom_obs_typeInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "pagination",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "paginationInput",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "name": "annotationsFilter",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "annotations_geom_obs_type",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "order",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "orderAnnotations_geom_obs_typeInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "pagination",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "paginationCursorInput",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "name": "annotationsConnection",
+              "type": {
+                "kind": "OBJECT",
+                "name": "Annotations_geom_obs_typeConnection",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "search",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "searchAnnotations_geom_obs_typeInput",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "countFilteredAnnotations",
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
@@ -20689,6 +20045,24 @@
                   }
                 },
                 {
+                  "defaultValue": null,
+                  "name": "addUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addPipeline_annotation",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -20851,6 +20225,42 @@
                   }
                 },
                 {
+                  "defaultValue": null,
+                  "name": "addUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeUserTo",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addPipeline_annotation",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removePipeline_annotation",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -20960,6 +20370,150 @@
                 }
               ],
               "name": "bulkDisAssociateAnnotations_geom_obs_typeWithFile_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationAnnotations_geom_obs_typeWithUser_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkAssociateAnnotations_geom_obs_typeWithUser_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationAnnotations_geom_obs_typeWithUser_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkDisAssociateAnnotations_geom_obs_typeWithUser_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkAssociateAnnotations_geom_obs_typeWithPipeline_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkDisAssociateAnnotations_geom_obs_typeWithPipeline_id",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -21925,299 +21479,6 @@
               "args": [
                 {
                   "defaultValue": null,
-                  "name": "who_delivers",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "reception_date",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "total_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "image_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "video_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "addDelivered_files",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "who_delivers",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "reception_date",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "total_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "image_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "video_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeNode_delivered_files",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "updateDelivered_files",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "delivered_files",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
-              "name": "deleteDelivered_files",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "bulkAssociationInput",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "bulkAssociationDelivered_filesWithNode_idInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "bulkAssociateDelivered_filesWithNode_id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "name": "bulkAssociationInput",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INPUT_OBJECT",
-                      "name": "bulkAssociationDelivered_filesWithNode_idInput",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": "false",
-                  "name": "skipAssociationsExistenceChecks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  }
-                }
-              ],
-              "name": "bulkDisAssociateDelivered_filesWithNode_id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
                   "name": "date_deployment",
                   "type": {
                     "kind": "SCALAR",
@@ -22949,7 +22210,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addCumulus_ecosystems",
+                  "name": "addCumulus_ecosystem",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -23007,7 +22268,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addUnique_nodes",
+                  "name": "addUnique_node",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -23020,7 +22281,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "removeUnique_nodes",
+                  "name": "removeUnique_node",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -23033,7 +22294,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addCumulus_ecosystems",
+                  "name": "addCumulus_ecosystem",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -23046,7 +22307,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "removeCumulus_ecosystems",
+                  "name": "removeCumulus_ecosystem",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -23113,6 +22374,15 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "date_deployment_device",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Date",
                     "ofType": null
                   }
                 },
@@ -23238,6 +22508,15 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "date_deployment_device",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Date",
                     "ofType": null
                   }
                 },
@@ -24795,19 +24074,6 @@
                   }
                 },
                 {
-                  "defaultValue": null,
-                  "name": "addDelivered_files",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -25028,32 +24294,6 @@
                 {
                   "defaultValue": null,
                   "name": "removeTransects",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addDelivered_files",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeDelivered_files",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -25681,15 +24921,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "commit_dvc_of_model",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "url_repo_model",
                   "type": {
                     "kind": "SCALAR",
@@ -25727,6 +24958,19 @@
                 {
                   "defaultValue": null,
                   "name": "addPipeline_products",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addAnnotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -25793,15 +25037,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "commit_dvc_of_model",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "url_repo_model",
                   "type": {
                     "kind": "SCALAR",
@@ -25852,6 +25087,32 @@
                 {
                   "defaultValue": null,
                   "name": "removePipeline_products",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addAnnotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeAnnotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -25968,24 +25229,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "audio_grid_id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_distance_to_mean",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "createdAt",
                   "type": {
                     "kind": "SCALAR",
@@ -26013,7 +25256,7 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addPipeline",
+                  "name": "addFileAssoc",
                   "type": {
                     "kind": "SCALAR",
                     "name": "ID",
@@ -26022,15 +25265,11 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "addFileAssoc",
+                  "name": "addPipeline",
                   "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
                   }
                 },
                 {
@@ -26125,24 +25364,6 @@
                 },
                 {
                   "defaultValue": null,
-                  "name": "audio_grid_id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "audio_distance_to_mean",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
                   "name": "createdAt",
                   "type": {
                     "kind": "SCALAR",
@@ -26170,6 +25391,24 @@
                 },
                 {
                   "defaultValue": null,
+                  "name": "addFileAssoc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeFileAssoc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
                   "name": "addPipeline",
                   "type": {
                     "kind": "SCALAR",
@@ -26184,32 +25423,6 @@
                     "kind": "SCALAR",
                     "name": "ID",
                     "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "addFileAssoc",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "name": "removeFileAssoc",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "ID",
-                      "ofType": null
-                    }
                   }
                 },
                 {
@@ -26250,6 +25463,78 @@
                 }
               ],
               "name": "deleteProduct",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationProductWithFile_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkAssociateProductWithFile_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "name": "bulkAssociationInput",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "bulkAssociationProductWithFile_idInput",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "name": "skipAssociationsExistenceChecks",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "name": "bulkDisAssociateProductWithFile_id",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -27045,6 +26330,19 @@
                   }
                 },
                 {
+                  "defaultValue": null,
+                  "name": "addUser_annotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
                   "defaultValue": "false",
                   "name": "skipAssociationsExistenceChecks",
                   "type": {
@@ -27203,6 +26501,32 @@
                 {
                   "defaultValue": null,
                   "name": "removeAssociated_cumulus",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "addUser_annotations",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "name": "removeUser_annotations",
                   "type": {
                     "kind": "LIST",
                     "name": null,
@@ -27943,6 +27267,78 @@
             },
             {
               "defaultValue": null,
+              "name": "user_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "interfaces": null,
+          "kind": "INPUT_OBJECT",
+          "name": "bulkAssociationAnnotations_geom_obs_typeWithUser_idInput",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "defaultValue": null,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "defaultValue": null,
+              "name": "pipeline_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "interfaces": null,
+          "kind": "INPUT_OBJECT",
+          "name": "bulkAssociationAnnotations_geom_obs_typeWithPipeline_idInput",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "defaultValue": null,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "defaultValue": null,
               "name": "criteria_id",
               "type": {
                 "kind": "NON_NULL",
@@ -27994,42 +27390,6 @@
           "interfaces": null,
           "kind": "INPUT_OBJECT",
           "name": "bulkAssociationCumulusWithEcosystem_idInput",
-          "possibleTypes": null
-        },
-        {
-          "enumValues": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "defaultValue": null,
-              "name": "id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "defaultValue": null,
-              "name": "node_id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "interfaces": null,
-          "kind": "INPUT_OBJECT",
-          "name": "bulkAssociationDelivered_filesWithNode_idInput",
           "possibleTypes": null
         },
         {
@@ -28462,6 +27822,42 @@
           "interfaces": null,
           "kind": "INPUT_OBJECT",
           "name": "bulkAssociationPhysical_deviceWithCumulus_idInput",
+          "possibleTypes": null
+        },
+        {
+          "enumValues": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "defaultValue": null,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "defaultValue": null,
+              "name": "file_id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "interfaces": null,
+          "kind": "INPUT_OBJECT",
+          "name": "bulkAssociationProductWithFile_idInput",
           "possibleTypes": null
         },
         {
