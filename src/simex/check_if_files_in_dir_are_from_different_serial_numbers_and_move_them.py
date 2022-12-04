@@ -1,5 +1,6 @@
 import os
 import argparse
+import datetime
 import pathlib
 from multiprocessing import Pool
 import itertools
@@ -37,6 +38,7 @@ def extract_serial_number_of_file_and_move_if_necessary(tup):
                 dst_f_diff_serial_number = os.path.join(dir_diff_serial_number,
                                                         f_pathlib.name)
                 f_pathlib.rename(dst_f_diff_serial_number)
+                return dir_diff_serial_number
 
 
 def arguments_parse():
@@ -48,6 +50,9 @@ Example usage:
 --------------
 
 check_if_files_in_dir_are_from_different_serial_numbers_and_move_them --input_directory /dir/ --number_of_processes
+
+If serial number is already known then it can be passed in the cli.
+check_if_files_in_dir_are_from_different_serial_numbers_and_move_them --input_directory /dir/ --number_of_processes --serial_number_reference serial_number
 
 """
 
@@ -108,5 +113,14 @@ def main():
                                        SUFFIXES_AUDIO_IMAGES)
         iterator_with_constant = zip(iterator, itertools.repeat(serial_number_ref))
         with Pool(processes=number_of_processes) as pool:
-            pool.map(extract_serial_number_of_file_and_move_if_necessary,
-                         iterator_with_constant)
+            list_map = pool.map(extract_serial_number_of_file_and_move_if_necessary,
+                                iterator_with_constant)
+        shared_volume = "/shared_volume"
+        os.makedirs(shared_volume, exist_ok=True)
+        list_for_new_dirs_created = os.path.join(shared_volume,
+                                             "simex_new_dirs_created_because_of_sampling_errors_" + \
+                                             datetime.date.today().strftime("%d-%m-%Y") + \
+                                             ".txt")
+        with open(list_for_new_dirs_created, "a") as file:
+            for elem in list_map:
+                file.write(elem + "\n")
