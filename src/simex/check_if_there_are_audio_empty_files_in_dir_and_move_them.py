@@ -1,5 +1,6 @@
 import os
 import argparse
+import datetime
 import pathlib
 from multiprocessing import Pool
 import subprocess
@@ -35,6 +36,7 @@ def check_audio_file(filename):
         dst_f_error = os.path.join(dir_error,
                                    f_pathlib.name)
         f_pathlib.rename(dst_f_error)
+        return dir_error
 
 
 def arguments_parse():
@@ -77,5 +79,17 @@ def main():
                                    SUFFIXES_SIPECAM_AUDIO)
 
     with Pool(processes=number_of_processes) as pool:
-        pool.map(check_audio_file,
-                 iterator)
+        list_map = pool.map(check_audio_file,
+                            iterator)
+    shared_volume = "/shared_volume"
+    os.makedirs(shared_volume, exist_ok=True)
+    list_for_new_dirs_created = os.path.join(shared_volume,
+                                         "simex_new_dirs_created_because_of_sampling_errors_" + \
+                                         datetime.date.today().strftime("%d-%m-%Y") + \
+                                         ".txt")
+    aux_list_for_new_dirs = []
+    with open(list_for_new_dirs_created, "a") as file:
+        for elem in list_map:
+            if elem is not None and elem not in aux_list_for_new_dirs:
+                file.write(elem + "\n")
+                aux_list_for_new_dirs.append(elem)

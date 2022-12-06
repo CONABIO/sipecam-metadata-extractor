@@ -1,7 +1,7 @@
 Set:
 
 ```
-SIMEX_VERSION=0.3
+SIMEX_VERSION=0.4
 REPO_URL=sipecam/simex
 DIR=/home/<user>/<midir>/sipecam-metadata-extractor/ #path where this git repository is cloned, example: /home/user/sipecam-metadata-extractor
 BUILD_DIR=$DIR/dockerfiles/$JUPYTERLAB_VERSION
