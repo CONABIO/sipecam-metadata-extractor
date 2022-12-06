@@ -121,7 +121,9 @@ def main():
                                              "simex_new_dirs_created_because_of_sampling_errors_" + \
                                              datetime.date.today().strftime("%d-%m-%Y") + \
                                              ".txt")
+        aux_list_for_new_dirs = []
         with open(list_for_new_dirs_created, "a") as file:
             for elem in list_map:
-                if elem is not None:
+                if elem is not None and elem not in aux_list_for_new_dirs:
                     file.write(elem + "\n")
+                    aux_list_for_new_dirs.append(elem)
