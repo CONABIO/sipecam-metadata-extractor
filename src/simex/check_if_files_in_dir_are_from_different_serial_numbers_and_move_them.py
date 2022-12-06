@@ -51,7 +51,7 @@ Example usage:
 
 check_if_files_in_dir_are_from_different_serial_numbers_and_move_them --input_directory /dir/ --number_of_processes
 
-If serial number is already known then it can be passed in the cli.
+If serial number is already known then it can be passed in the cli:
 check_if_files_in_dir_are_from_different_serial_numbers_and_move_them --input_directory /dir/ --number_of_processes --serial_number_reference serial_number
 
 """
