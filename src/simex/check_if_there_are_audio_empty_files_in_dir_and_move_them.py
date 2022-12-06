@@ -81,12 +81,13 @@ def main():
     with Pool(processes=number_of_processes) as pool:
         list_map = pool.map(check_audio_file,
                             iterator)
-        shared_volume = "/shared_volume"
-        os.makedirs(shared_volume, exist_ok=True)
-        list_for_new_dirs_created = os.path.join(shared_volume,
-                                             "simex_new_dirs_created_because_of_sampling_errors_" + \
-                                             datetime.date.today().strftime("%d-%m-%Y") + \
-                                             ".txt")
-        with open(list_for_new_dirs_created, "a") as file:
-            for elem in list_map:
+    shared_volume = "/shared_volume"
+    os.makedirs(shared_volume, exist_ok=True)
+    list_for_new_dirs_created = os.path.join(shared_volume,
+                                         "simex_new_dirs_created_because_of_sampling_errors_" + \
+                                         datetime.date.today().strftime("%d-%m-%Y") + \
+                                         ".txt")
+    with open(list_for_new_dirs_created, "a") as file:
+        for elem in list_map:
+            if elem is not None:
                 file.write(elem + "\n")
