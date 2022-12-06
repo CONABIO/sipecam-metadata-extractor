@@ -123,4 +123,5 @@ def main():
                                              ".txt")
         with open(list_for_new_dirs_created, "a") as file:
             for elem in list_map:
-                file.write(elem + "\n")
+                if elem is not None:
+                    file.write(elem + "\n")
