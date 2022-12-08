@@ -268,7 +268,10 @@ def return_files_moved_to_their_source_dir(d_mapping_dst_filename_src_filename,
     """
     for dst_f, src_f in d_mapping_dst_filename_src_filename.items():
         dst_f_pathlib = pathlib.Path(dst_f)
-        dst_f_pathlib.rename(src_f)
+        try:
+            dst_f_pathlib.rename(src_f)
+        except:
+            shutil.move(src_f, dst_f)
 
 def check_file_existence_in_standard_dir(logger,
                                          std_dir,
@@ -468,7 +471,10 @@ def move_files_to_standard_dir(logger,
             dict_output_metadata["MetadataFiles"][dst_filename]["CentroidCumulusLatitude"]  = lat_centroid_cumulus
             dict_output_metadata["MetadataFiles"][dst_filename]["CentroidCumulusLongitude"] = long_centroid_cumulus
             if not dry_run:
-                f_pathlib.rename(dst_filename) #move
+                try:
+                    f_pathlib.rename(dst_filename) #move
+                except:
+                    shutil.move(filename, dst_filename)
 
     if not dst_filename_exists and not dry_run:
         path_for_txt_with_new_dirs_moved  = os.path.join(path_for_dir_with_txt_of_new_dirs_moved,
