@@ -2,6 +2,7 @@ import os
 import argparse
 import datetime
 import pathlib
+import shutil
 from multiprocessing import Pool
 import subprocess
 
@@ -35,7 +36,10 @@ def check_audio_file(filename):
         os.makedirs(dir_error, exist_ok=True)
         dst_f_error = os.path.join(dir_error,
                                    f_pathlib.name)
-        f_pathlib.rename(dst_f_error)
+        try:
+            f_pathlib.rename(dst_f_error)
+        except:
+            shutil.move(filename, dst_f_error)
         return dir_error
 
 
