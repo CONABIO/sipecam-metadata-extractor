@@ -2,6 +2,7 @@ import os
 import argparse
 import datetime
 import pathlib
+import shutil
 from multiprocessing import Pool
 import itertools
 
@@ -37,7 +38,10 @@ def extract_serial_number_of_file_and_move_if_necessary(tup):
                 os.makedirs(dir_diff_serial_number, exist_ok=True)
                 dst_f_diff_serial_number = os.path.join(dir_diff_serial_number,
                                                         f_pathlib.name)
-                f_pathlib.rename(dst_f_diff_serial_number)
+                try:
+                    f_pathlib.rename(dst_f_diff_serial_number)
+                except:
+                    shutil.move(filename, dst_f_diff_serial_number)
                 return dir_diff_serial_number
 
 
