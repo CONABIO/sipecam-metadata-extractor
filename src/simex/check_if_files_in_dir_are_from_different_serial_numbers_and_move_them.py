@@ -8,7 +8,7 @@ import itertools
 
 from simex import get_logger_for_writing_logs_to_file
 from simex import SUFFIXES_SIPECAM, SUFFIXES_SIPECAM_AUDIO, \
-SUFFIXES_SIPECAM_IMAGES, SUFFIXES_SIPECAM_VIDEO
+SUFFIXES_SIPECAM_IMAGES, SUFFIXES_SIPECAM_VIDEO, SUFFIXES_SIPECAM
 from simex.utils.directories_and_files import multiple_file_types
 from simex import read_metadata_image, read_metadata_audio
 
@@ -125,9 +125,17 @@ def main():
                                              "simex_new_dirs_created_because_of_sampling_errors_" + \
                                              datetime.date.today().strftime("%d-%m-%Y") + \
                                              ".txt")
+        list_for_files_moved_because_errors = os.path.join(shared_volume,
+                                                           "simex_files_moved_because_of_sampling_errors_" + \
+                                                           datetime.date.today().strftime("%d-%m-%Y") + \
+                                                           ".txt")
         aux_list_for_new_dirs = []
-        with open(list_for_new_dirs_created, "a") as file:
-            for elem in list_map:
-                if elem is not None and elem not in aux_list_for_new_dirs:
-                    file.write(elem + "\n")
-                    aux_list_for_new_dirs.append(elem)
+        with open(list_for_new_dirs_created, "a") as dst_file_for_new_dirs:
+            for directory in list_map:
+                if directory is not None and directory not in aux_list_for_new_dirs:
+                    logger.info("Dir: %s had files with different serial numbers", directory)
+                    dst_file_for_new_dirs.write(directory + "\n")
+                    aux_list_for_new_dirs.append(directory)
+                    with open(list_for_files_moved_because_errors, 'a') as dst_file_for_files_because_errors:
+                       for f in multiple_file_types(directory, SUFFIXES_SIPECAM):
+                           dst_file_for_files_because_errors.write(f + "\n")

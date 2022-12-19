@@ -24,7 +24,6 @@ RUN cp ~/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_server_config.py
 #install exiftool
 
 RUN git clone https://github.com/exiftool/exiftool.git && cd exiftool && perl Makefile.PL && make && make test && make install
-
 #install simex pkg
 #next line works when building using github actions, assumes sipecam-metadata-extractor repo is cloned
 COPY . /root/sipecam-metadata-extractor
