@@ -103,6 +103,6 @@ def main():
                 dst_file_for_new_dirs.write(directory + "\n")
                 aux_list_for_new_dirs.append(directory)
                 with open(list_for_files_moved_because_errors, 'a') as dst_file_for_files_because_errors:
-                    for f in multiple_file_types(directory, SUFFIXES_SIPECAM):
+                    for f in multiple_file_types(directory, SUFFIXES_SIPECAM_AUDIO):
                         dst_file_for_files_because_errors.write(f + "\n")
                     
