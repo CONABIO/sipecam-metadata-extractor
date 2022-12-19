@@ -247,6 +247,7 @@ def register_dir_that_couldnt_move(fname_source_first_date_pathlib,
     if fname_source_first_date_pathlib.suffix in SUFFIXES_SIPECAM and not move_files:
         create_txt_of_dirs_not_moved = True
     if create_txt_of_dirs_not_moved:
+        #write txt with dirs not moved
         name_dir_for_dirs_not_moved  = "dirs_not_moved_with_simex"
         path_for_dir_with_txt_of_dirs_not_moved  = os.path.join(path_for_std_directory,
                                                                 name_dir_for_dirs_not_moved)
@@ -257,6 +258,20 @@ def register_dir_that_couldnt_move(fname_source_first_date_pathlib,
                                                          ".txt"
         with open(path_for_txt_with_dirs_not_moved, "a") as write_dst_dirs_not_moved:
             write_dst_dirs_not_moved.write(src_dir + "\n")
+            
+        #write txt with files not moved
+        name_dir_for_files_not_moved = "files_not_moved_with_simex"
+        path_for_dir_with_txt_of_files_not_moved  = os.path.join(path_for_std_directory,
+                                                                 name_dir_for_files_not_moved)
+        os.makedirs(path_for_dir_with_txt_of_files_not_moved,  exist_ok=True)
+        path_for_txt_with_files_not_moved  = os.path.join(path_for_dir_with_txt_of_files_not_moved,
+                                                          name_dir_for_files_not_moved) + "_" + \
+                                                          datetime.date.today().strftime("%d-%m-%Y") + \
+                                                          ".txt"    
+        with open(path_for_txt_with_files_not_moved, 'a') as write_dst_files_not_moved:
+            for f in multiple_file_types(src_dir, SUFFIXES_SIPECAM):
+                    write_dst_files_not_moved.write(f + "\n")
+            
 
 def return_files_moved_to_their_source_dir(d_mapping_dst_filename_src_filename,
                                            src_dir):
