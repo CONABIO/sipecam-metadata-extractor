@@ -8,7 +8,7 @@ import itertools
 
 from simex import get_logger_for_writing_logs_to_file
 from simex import SUFFIXES_SIPECAM, SUFFIXES_SIPECAM_AUDIO, \
-SUFFIXES_SIPECAM_IMAGES, SUFFIXES_SIPECAM_VIDEO
+SUFFIXES_SIPECAM_IMAGES, SUFFIXES_SIPECAM_VIDEO, SUFFIXES_SIPECAM
 from simex.utils.directories_and_files import multiple_file_types
 from simex import read_metadata_image, read_metadata_audio
 
