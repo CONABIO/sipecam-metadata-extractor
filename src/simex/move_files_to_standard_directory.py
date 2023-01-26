@@ -231,20 +231,18 @@ def check_files_coords_and_assign_them_to_device_if_necessary(logger,
             d_metadatafiles_for_file["Longitude"] = long_file
 
 def register_dir_that_couldnt_move(fname_source_first_date_pathlib,
-                                   move_files,
                                    path_for_std_directory,
                                    src_dir):
     """
     Auxiliar function to register directory src_dir that couldn't move to path_for_std_directory
     Args:
         fname_source_first_date_pathlib (instance of pathlib class): help to find suffix of filename
-        move_files (boolean):            wether to move files if conditions in main function are met. Expected false
         path_for_std_directory (str):    path where files were going to moved
         src_dir (str):                   directory that have source files and json file with serial number and dates.
     """
     #register which dirs couldn't be moved
     create_txt_of_dirs_not_moved = False
-    if fname_source_first_date_pathlib.suffix in SUFFIXES_SIPECAM and not move_files:
+    if fname_source_first_date_pathlib.suffix in SUFFIXES_SIPECAM:
         create_txt_of_dirs_not_moved = True
     if create_txt_of_dirs_not_moved:
         #write txt with dirs not moved
