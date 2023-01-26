@@ -1,4 +1,3 @@
-#Docker image will be built using github actions
 FROM ubuntu:20.04
 
 ENV TIMEZONE America/Mexico_City
