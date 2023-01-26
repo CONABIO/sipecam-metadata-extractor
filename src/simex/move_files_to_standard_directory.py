@@ -688,7 +688,6 @@ def main():
                 if not dry_run:
                     logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
                     register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                                   move_files,
                                                    path_for_standard_directory,
                                                    directory_with_file_of_serial_number_and_dates)
             else:
@@ -828,7 +827,6 @@ def main():
                                 if not dry_run:
                                     logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
                                     register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                                                   move_files,
                                                                    path_for_standard_directory,
                                                                    directory_with_file_of_serial_number_and_dates)
                             else:
@@ -843,7 +841,6 @@ def main():
                         if not dry_run:
                             logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
                             register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                                           move_files,
                                                            path_for_standard_directory,
                                                            directory_with_file_of_serial_number_and_dates)
                 except Exception as e:
@@ -852,7 +849,6 @@ def main():
                     if not dry_run:
                         logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
                         register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                                       move_files,
                                                        path_for_standard_directory,
                                                        directory_with_file_of_serial_number_and_dates)
             else: #len of list is >1 then there's no unique date of deployment of device
@@ -860,7 +856,6 @@ def main():
                 if not dry_run:
                     logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
                     register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                                   move_files,
                                                    path_for_standard_directory,
                                                    directory_with_file_of_serial_number_and_dates)
     except Exception as e:
@@ -870,6 +865,5 @@ def main():
         if not dry_run:
             logger.info("registering dir that couldnt be moved: %s" % directory_with_file_of_serial_number_and_dates)
             register_dir_that_couldnt_move(filename_source_first_date_pathlib,
-                                           move_files,
                                            path_for_standard_directory,
                                            directory_with_file_of_serial_number_and_dates)
