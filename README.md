@@ -4,12 +4,12 @@
 
 [pyexiftool](https://github.com/sylikc/pyexiftool), see [pyexiftool/examples](https://sylikc.github.io/pyexiftool/examples.html)
 
-# Running `sipecam/simex:0.5` docker image in CONABIO cluster
+# Running `sipecam/simex:0.6` docker image in CONABIO cluster
 
 Ssh to one node of CONABIO cluster as user `madmex_admin`.
 
 ```
-SIMEX_VERSION=0.5
+SIMEX_VERSION=0.6
 REPO_URL=sipecam/simex
 ```
 
@@ -110,7 +110,7 @@ nodo7
 then:
 
 ```
-SIMEX_VERSION=0.5
+SIMEX_VERSION=0.6
 REPO_URL=sipecam/simex
 parallel-ssh -i -p 2 -v -h nodos_sipecam.txt -l madmex_admin "docker rmi $REPO_URL:$SIMEX_VERSION"
 parallel-ssh -i -p 2 -v -h nodos_sipecam.txt -l madmex_admin "docker pull $REPO_URL:$SIMEX_VERSION"
@@ -124,7 +124,7 @@ parallel-ssh -i -p 2 -v -h nodos_sipecam.txt -l madmex_admin "docker pull $REPO_
 Set:
 
 ```
-SIMEX_VERSION=0.5
+SIMEX_VERSION=0.6
 REPO_URL=sipecam/simex
 CONTAINER_NAME=sipecam-simex
 ```
@@ -156,7 +156,7 @@ Only first time: create
 
 #SBATCH --exclude nodo1,nodo2,nodo3,nodo4
 
-SIMEX_VERSION=0.5
+SIMEX_VERSION=0.6
 REPO_URL=sipecam/simex
 
 echo $(hostname)
