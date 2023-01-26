@@ -8,7 +8,7 @@ on:
   push:
     branches: [ develop ]
     paths:
-    - dockerfiles/0.5/Dockerfile
+    - dockerfiles/0.6/Dockerfile
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build-and-push-docker-image-sipecam-simex:
@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: dockerfiles/0.5/Dockerfile
+          file: dockerfiles/0.6/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: sipecam/simex:0.5
+          tags: sipecam/simex:0.6
